@@ -19,9 +19,13 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    @include('navbar1')
-    <main>
+    <div class="w-full h-screen" style="background-image: url({{ asset('img/gora-rozciagniete.jpg') }})">
+        @include('navbar1')
+        @include('main1')
+    </div>
+    <div class="w-full h-screen">
+        @include('about1')
+    </div>
 
-    </main>
 </body>
 </html>
