@@ -17,7 +17,7 @@ class RentalResource extends Resource
 {
     protected static ?string $model = Rental::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-ticket';
+    protected static ?string $navigationIcon = 'heroicon-o-bookmark';
 
     protected static ?string $navigationLabel = 'Lista wynajęć';
 
@@ -33,7 +33,9 @@ class RentalResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nazwa')
+                    ->searchable(),
             ])
             ->filters([
                 //

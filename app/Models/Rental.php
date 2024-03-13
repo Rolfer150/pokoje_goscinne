@@ -19,6 +19,7 @@ class Rental extends Model
      */
     protected $fillable = [
         'room_id',
+        'name',
         'email',
         'phone_number',
         'people_amount',

@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('room_id')->constrained('rooms')->cascadeOnDelete();
+            $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
+            $table->longText('comments')->nullable();
             $table->integer('people_amount');
             $table->integer('rental_length');
             $table->float('payment');

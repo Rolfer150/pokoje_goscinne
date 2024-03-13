@@ -17,7 +17,7 @@ class RoomFacilityResource extends Resource
 {
     protected static ?string $model = RoomFacility::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-sparkles';
 
     protected static ?string $navigationLabel = 'Udogodnienia w pokojach';
 
@@ -35,7 +35,8 @@ class RoomFacilityResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nazwa'),
             ])
             ->filters([
                 //

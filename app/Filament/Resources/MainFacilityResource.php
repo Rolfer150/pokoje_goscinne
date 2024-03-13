@@ -17,7 +17,7 @@ class MainFacilityResource extends Resource
 {
     protected static ?string $model = MainFacility::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-sparkles';
 
     protected static ?string $navigationLabel = 'Udogodnienia w apartamencie';
 
@@ -35,7 +35,8 @@ class MainFacilityResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                ->label('Nazwa'),
             ])
             ->filters([
                 //

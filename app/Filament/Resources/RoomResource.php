@@ -31,21 +31,19 @@ class RoomResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Nazwa')
                     ->required()
-                    ->unique()
+                    ->unique(ignoreRecord: true)
                     ->live(onBlur: true)
                     ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
                         if ($operation !== 'create') return;
 
                         $set('slug', Str::slug($state));
                     })
-                    ->maxLength(16),
+                    ->maxLength(24),
                 Forms\Components\TextInput::make('slug')
                     ->label('Adres URL')
                     ->required()
-                    ->unique()
-
-                    ->maxLength(32),
-                Forms\Components\Textarea::make('description')
+                    ->maxLength(48),
+                Forms\Components\RichEditor::make('description')
                     ->label('Opis')
                     ->required()
                     ->columnSpanFull(),
@@ -66,20 +64,26 @@ class RoomResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Nazwa')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
+                    ->label('Adres URL')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('accommodation_number')
+                    ->label('Liczba łóżek')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
+                    ->label('Cena za dobę')
                     ->suffix('zł')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Utworzono')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Zmodyfikowano')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

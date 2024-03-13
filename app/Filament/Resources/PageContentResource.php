@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class PageContentResource extends Resource
 {
@@ -25,7 +26,26 @@ class PageContentResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label('Nazwa')
+                    ->required()
+                    ->unique()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                        if ($operation !== 'create') return;
+
+                        $set('slug', Str::slug($state));
+                    })
+                    ->maxLength(16),
+                    Forms\Components\TextInput::make('slug')
+                    ->label('Adres URL')
+                    ->required()
+                    ->unique()
+                    ->maxLength(32),
+                    Forms\Components\RichEditor::make('description')
+                    ->label('Opis')
+                    ->required()
+                    ->columnSpanFull(),
             ]);
     }
 

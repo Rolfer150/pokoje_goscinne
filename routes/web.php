@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MainFacilitiesControlller;
+use App\Http\Controllers\RentalsController;
+use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home1');
-});
+Route::get('/', [MainFacilitiesControlller::class, 'index'])->name('home');
+Route::get('/kontakt', [ContactController::class, 'index'])->name('contact');
+Route::get('/pokoje', [RoomsController::class, 'index'])->name('rooms');
