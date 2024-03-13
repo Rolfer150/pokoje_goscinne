@@ -29,7 +29,11 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contact = new Contact($request->all());
+
+        $request->save($contact);
+
+        return redirect(route('home'));
     }
 
     /**

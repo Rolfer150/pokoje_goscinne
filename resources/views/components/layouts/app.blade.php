@@ -27,10 +27,13 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body class="antialiased">
+    <body class="antialiased text-[#1e212b]">
+        <x-navbar />
         {{ $slot }}
+        <x-footer />
 
         @filamentScripts
         @vite('resources/js/app.js')
+
     </body>
 </html>

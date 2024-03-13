@@ -1,5 +1,6 @@
 <x-layouts.app pageTitle="Pokoje">
     <div>
+        <x-header title="Pokoje" />
         <ul>
             @foreach($roomsQuery as $room)
                 <li>

@@ -19,7 +19,7 @@ class RentalResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bookmark';
 
-    protected static ?string $navigationLabel = 'Lista wynajęć';
+    protected static ?string $navigationLabel = 'Rezerwacje';
 
     public static function form(Form $form): Form
     {

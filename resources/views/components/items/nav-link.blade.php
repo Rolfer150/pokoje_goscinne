@@ -1,1 +1,6 @@
-<a href="{{ $linkUrl }}" class=" rounded-full"><span>{{ $title }}</span></a>
+<a {{ $attributes->merge([
+    'class' => 'rounded-full',
+    'href' => $linkUrl,
+]) }}>
+    <span>{{ $title }}</span>
+</a>
