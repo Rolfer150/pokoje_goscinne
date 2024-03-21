@@ -26,7 +26,7 @@
                             @endforeach
                             @foreach($room->image_path as $image)
                                 @if($image)
-                                    <img src="{{ '/storage/' . $image }}" />
+                                    <img alt="" src="{{ '/storage/' . $image }}" />
                                 @endif
                             @endforeach
                         </div>
