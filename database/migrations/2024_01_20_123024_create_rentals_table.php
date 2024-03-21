@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_id')->constrained('rooms')->cascadeOnDelete();
+            $table->foreignId('room_id')->nullable()->constrained('rooms')->cascadeOnDelete();
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->longText('comments')->nullable();
             $table->integer('people_amount');
-            $table->integer('rental_length');
+            $table->date('rental_start');
+            $table->date('rental_end');
             $table->float('payment');
             $table->enum('payment_type', PaymentType::values())->default(PaymentType::ON_PLACE->value);
             $table->enum('status', RentalStatus::values())->default(RentalStatus::WAITING->value);

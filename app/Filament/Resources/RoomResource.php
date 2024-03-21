@@ -55,7 +55,21 @@ class RoomResource extends Resource
                     ->label('Cena za dobę')
                     ->required()
                     ->numeric()
-                    ->suffix('zł'),
+                    ->suffix('zł')
+                    ->rules('regex:/^\d{1,6}(\.\d{0,2})?$/'),
+                Forms\Components\CheckboxList::make('room_facility_id')
+                    ->label("Udogodnienia")
+                    ->searchable()
+                    ->relationship('roomFacilities', 'name')
+                    ->columns(2)
+                    ->gridDirection('row')
+                    ->required(),
+                Forms\Components\FileUpload::make('image_path')
+                    ->label("Zdjęcia")
+                    ->multiple()
+                    ->directory('room-images')
+                    ->preserveFilenames()
+                    ->image(),
             ]);
     }
 

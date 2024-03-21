@@ -1,4 +1,4 @@
-<footer class="p-10 bg-[#1e212b] text-white">
+<footer class="p-10 bg-[#1e212b] text-emerald-400">
     <h1 class="text-3xl mb-10">Kontakt</h1>
     <div class="flex justify-between">
         <div>
@@ -26,5 +26,5 @@
             <a href="#">{{ svg('bxl-gmail') }}</a>
         </div>
     </div>
-    <p class="text-xs text-center mt-5">Copyright {{date('Y')}} &copy; Wszelkie prawa zastrzeżone</p>
+    <p class="text-xs text-center mt-5">Copyright 2024 &copy;</p>
 </footer>

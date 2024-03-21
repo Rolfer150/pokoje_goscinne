@@ -14,8 +14,9 @@ class RentalsController extends Controller
      */
     public function index(): View
     {
-        $roomsQuery = Room::all()
-            ->pluck('name');
+        $roomsQuery = Room::query()
+            ->select('id', 'name')
+            ->get();
         return view('rental', compact('roomsQuery'));
     }
 
@@ -26,7 +27,6 @@ class RentalsController extends Controller
     {
 //        dd($request->all());
         $rental = new Rental($request->all());
-
 
         $rental->save();
 

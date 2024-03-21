@@ -27,7 +27,7 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body class="antialiased text-[#1e212b]">
+    <body class="antialiased bg-slate-100 text-[#1e212b]">
         <x-navbar />
         {{ $slot }}
         <x-footer />

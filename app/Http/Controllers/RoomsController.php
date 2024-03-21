@@ -10,8 +10,10 @@ class RoomsController extends Controller
 {
     public function index(): View
     {
-        $roomsQuery = Room::all()
-            ->pluck('name');
+        $roomsQuery = Room::query()
+            ->select('id', 'name', 'price', 'description', 'image_path', 'apartment_size', 'accommodation_number')
+//            ->with('roomFacilities')
+            ->get();
 
 //        dd($roomsQuery);
 
