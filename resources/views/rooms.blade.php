@@ -24,11 +24,14 @@
                             @foreach($room->getFacilities($room->id) as $facility)
                                 <p>{{ $facility }}</p>
                             @endforeach
-                            @foreach($room->image_path as $image)
-                                @if($image)
-                                    <img alt="" src="{{ '/storage/' . $image }}" />
-                                @endif
-                            @endforeach
+                            <div class="mt-8 flex flex-wrap gap-2 justify-center">
+                                @foreach($room->image_path as $image)
+                                    @if($image)
+                                        <img class="w-[20vw] opacity-100 transition duration-300 hover:opacity-50" alt="" src="{{ '/storage/' . $image }}" />
+                                    @endif
+                                @endforeach
+                            </div>
+
                         </div>
                     </details>
                 </div>
