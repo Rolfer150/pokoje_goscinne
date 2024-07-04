@@ -29,6 +29,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        dd(R);
         $contact = new Contact($request->all());
 
         $request->save($contact);

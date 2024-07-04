@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRenalRequest;
 use App\Models\Rental;
 use App\Models\Room;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class RentalsController extends Controller
@@ -23,7 +23,7 @@ class RentalsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRenalRequest $request)
     {
 //        dd($request->all());
         $rental = new Rental($request->all());

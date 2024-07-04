@@ -1,6 +1,6 @@
 <x-layouts.app pageTitle="Rezerwacja">
     <x-header title="Rezerwacja" />
-    <div class="xs:pl-4 xs:pr-4 sm:pl-8 sm:pr-8 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-10">
+    <div class="xs:pl-4 xs:pr-4 sm:pl-8 sm:pr-8 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-10  mb-10">
         <form method="POST" action="{{ route('rental.store') }}" class="flex flex-col justify-between gap-y-2">
             @csrf
 

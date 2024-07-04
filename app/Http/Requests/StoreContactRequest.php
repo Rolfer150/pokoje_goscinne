@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRenalRequest extends FormRequest
+class StoreContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -27,8 +27,8 @@ class StoreRenalRequest extends FormRequest
             'phone_number' => 'min:100000000|max:999999999',
             'comments' => 'max:6400',
             'people_amount' => 'required|min:1',
-            'rental_start' => 'required|date',
-            'rental_end' => 'required|date',
+            'rental_start' => 'required',
+            'rental_end' => 'required',
         ];
     }
 }
