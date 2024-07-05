@@ -23,6 +23,9 @@ class RoomFacilityResource extends Resource
 
     protected static ?string $navigationGroup = 'Modyfikowanie danych obiektu noclegowego';
 
+    protected static ?string $modelLabel = 'udogodnienie (pokój)';
+
+
     public static function form(Form $form): Form
     {
         return $form

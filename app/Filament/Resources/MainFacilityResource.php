@@ -23,6 +23,7 @@ class MainFacilityResource extends Resource
 
     protected static ?string $navigationGroup = 'Modyfikowanie danych obiektu noclegowego';
 
+    protected static ?string $modelLabel = 'udogodnienie (apartament)';
     public static function form(Form $form): Form
     {
         return $form

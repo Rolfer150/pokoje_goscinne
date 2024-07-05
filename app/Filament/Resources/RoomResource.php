@@ -17,9 +17,10 @@ use Illuminate\Support\Str;
 class RoomResource extends Resource
 {
     protected static ?string $model = Room::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-home';
 
+    protected static ?string $title = 'Custom Page Title';
+    protected static ?string $modelLabel = 'pokój';
     protected static ?string $navigationLabel = 'Pokoje';
 
     protected static ?string $navigationGroup = 'Modyfikowanie danych obiektu noclegowego';
@@ -82,7 +83,8 @@ class RoomResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->label('Adres URL')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('accommodation_number')
                     ->label('Liczba łóżek')
                     ->numeric()
@@ -91,14 +93,20 @@ class RoomResource extends Resource
                     ->label('Cena za dobę')
                     ->suffix('zł')
                     ->sortable(),
+                Tables\Columns\IconColumn::make('isOccupied')
+                    ->label('Czy jest zajęte?')
+                    ->icon(fn (string $state): string => match ($state) {
+                        '0' => 'heroicon-o-lock-open',
+                        '1' => 'heroicon-o-lock-closed',
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Utworzono')
-                    ->dateTime()
+                    ->dateTime('d/m/Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Zmodyfikowano')
-                    ->dateTime()
+                    ->dateTime('d/m/Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
@@ -107,6 +115,7 @@ class RoomResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

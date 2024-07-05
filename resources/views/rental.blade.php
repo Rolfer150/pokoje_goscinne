@@ -32,12 +32,13 @@
 
             <livewire:data-picker />
 
-            {{--        <label for="rooms">Pokoje</label>--}}
-            {{--        <x-items.select name="rooms">--}}
-            {{--            @foreach($roomsQuery as $room)--}}
-            {{--                <option name="{{ $room->id }}" value="{{ $room->id }}">{{ $room->name }}</option>--}}
-            {{--            @endforeach--}}
-            {{--        </x-items.select>--}}
+            <label for="rooms">Pokoje</label>
+            <x-items.select name="rooms">
+                @foreach($roomsQuery as $room)
+                    <option name="{{ $room->id }}" value="{{ $room->slug }}">{{ $room->name }}</option>
+                @endforeach
+            </x-items.select>
+
             <label for="comments">Zapytania/uwagi</label>
             <x-items.textarea name="comments" placeholder="Wprowadź swoje zapytania/uwagi..."></x-items.textarea>
 

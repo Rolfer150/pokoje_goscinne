@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\RentalStatus;
 use App\Filament\Resources\RentalResource\Pages;
 use App\Filament\Resources\RentalResource\RelationManagers;
 use App\Models\Rental;
@@ -16,7 +17,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class RentalResource extends Resource
 {
     protected static ?string $model = Rental::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-bookmark';
 
     protected static ?string $navigationLabel = 'Rezerwacje';
@@ -25,7 +25,8 @@ class RentalResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('status')
+                    ->options(RentalStatus::class)
             ]);
     }
 
@@ -34,8 +35,31 @@ class RentalResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Nazwa')
+                    ->label('Imię i nazwisko')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Adres e-mail')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone_number')
+                    ->label('Numer telefonu')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Data wysłania rezerwacji')
+                    ->dateTime('d/m/Y', 'GMT+2')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('rental_start')
+                    ->label('Początek pobytu')
+                    ->dateTime('d/m/Y', 'GMT+2')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('rental_end')
+                    ->label('Zakończenie pobytu')
+                    ->dateTime('d/m/Y', 'GMT+2')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status rezerwacji')
+                    ->sortable()
+                    ->badge(),
             ])
             ->filters([
                 //

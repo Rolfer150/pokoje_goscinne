@@ -1,6 +1,6 @@
 <div id="about" class="h-full p-10 pl-40 pr-40">
     <h2 class="text-6xl text-emerald-400 font-bold p-4">O nas</h2>
-    <p class="mt-10">Zapraszamy do wsi Kluszkowce w gminie Czorsztyn, w gorczańskim Paśmie Lubania. Miejscowość leży w
+    <p class="mt-10 text-lg">Zapraszamy do wsi Kluszkowce w gminie Czorsztyn, w gorczańskim Paśmie Lubania. Miejscowość leży w
         malowniczej dolinie potoku Kluszkowianka, w pobliżu Jeziora Czorsztyńskiego i innych miejscowości turystycznych
         takich jak Czorsztyn, Niedzica, Krościenko nad Dunajcem i Szczawnica. Odległość do Nowego Targu to zaledwie
         23 km, a do Rabki-Zdrój 45 km. W naszym domowym zaciszu oferujemy pokoje 2-, 3- i 4-osobowe z łazienką na

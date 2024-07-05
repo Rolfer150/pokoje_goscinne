@@ -10,6 +10,8 @@ class ListRooms extends ListRecords
 {
     protected static string $resource = RoomResource::class;
 
+    protected static ?string $title = "Pokoje";
+
     protected function getHeaderActions(): array
     {
         return [

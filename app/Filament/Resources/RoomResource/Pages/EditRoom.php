@@ -10,6 +10,8 @@ class EditRoom extends EditRecord
 {
     protected static string $resource = RoomResource::class;
 
+    protected static ?string $title = "Edycja pokoju";
+
     protected function getHeaderActions(): array
     {
         return [

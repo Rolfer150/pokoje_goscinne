@@ -23,8 +23,8 @@ return new class extends Migration
             $table->integer('people_amount');
             $table->date('rental_start');
             $table->date('rental_end');
-            $table->float('payment');
-            $table->enum('payment_type', PaymentType::values())->default(PaymentType::ON_PLACE->value);
+//            $table->float('payment');
+//            $table->enum('payment_type', PaymentType::values())->default(PaymentType::ON_PLACE->value);
             $table->enum('status', RentalStatus::values())->default(RentalStatus::WAITING->value);
             $table->timestamps();
         });

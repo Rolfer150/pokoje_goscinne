@@ -1,8 +1,8 @@
 <x-layouts.app pageTitle="Pokoje">
     <x-header title="Pokoje"/>
 
-    <div class="ml-40 mr-40 mt-10">
-        <p class="">
+    <div class="ml-4 mr-4 mt-10 mb-10 sm:ml-8 sm:mr-8 sm:mt-14 sm:mb-14 lg:ml-36 lg:mr-36 lg:mt-20 lg:mb-20">
+        <p class="text-lg">
             Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz
             pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później
             zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach
@@ -13,28 +13,7 @@
 
         <div class="mt-10">
             @foreach($roomsQuery as $room)
-                <div class="mt-5 mb-5">
-                    <details class="open:bg-white dark:open:bg-slate-900 open:ring-1 open:ring-black/5 dark:open:ring-white/10
-                        open:shadow-lg p-6 rounded-lg">
-                        <summary class="transition">{{ $room->name }}</summary>
-                        <div>
-                            <p>{{ $room->description }}</p>
-                            <p>{{ $room->price }}</p>
-                            <p>{{ $room->accommodation_number }}</p>
-                            @foreach($room->getFacilities($room->id) as $facility)
-                                <p>{{ $facility }}</p>
-                            @endforeach
-                            <div class="mt-8 flex flex-wrap gap-2 justify-center">
-                                @foreach($room->image_path as $image)
-                                    @if($image)
-                                        <img class="w-[20vw] opacity-100 transition duration-300 hover:opacity-50" alt="" src="{{ '/storage/' . $image }}" />
-                                    @endif
-                                @endforeach
-                            </div>
-
-                        </div>
-                    </details>
-                </div>
+                <livewire:detail-panel :room="$room" />
             @endforeach
         </div>
     </div>

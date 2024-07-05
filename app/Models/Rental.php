@@ -36,7 +36,7 @@ class Rental extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'payment_type' => PaymentType::class,
+//        'payment_type' => PaymentType::class,
         'status' => RentalStatus::class,
     ];
 
