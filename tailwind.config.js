@@ -10,9 +10,6 @@ export default {
     ],
     theme: {
       extend: {
-          fontFamily: {
-            sans: ['Railway', ...defaultTheme.fontFamily.sans],
-          },
           screens: {
               xs: "420px",
               sm: "680px",

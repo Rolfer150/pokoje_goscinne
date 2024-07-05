@@ -12,10 +12,10 @@ enum RentalStatus: string implements HasLabel, HasColor
     case ENDED = 'zakończono';
     case CANCELED = 'anulowano';
 
-//    public static function values(): array
-//    {
-//        return array_column(self::cases(), 'value');
-//    }
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
 
     public function getLabel(): ?string
     {

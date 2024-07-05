@@ -1,6 +1,6 @@
 <x-layouts.app pageTitle="Kontakt">
     <x-header title="Kontakt" />
-    <div class="xs:pl-4 xs:pr-4 sm:pl-8 sm:pr-8 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-10 mb-10">
+    <div class="ml-4 mr-4 mt-10 mb-10 sm:ml-8 sm:mr-8 sm:mt-14 sm:mb-14 lg:ml-36 lg:mr-36 lg:mt-20 lg:mb-20">
         <form method="POST" action="{{ route('contact.store') }}" class="flex flex-col justify-between gap-y-2">
             @csrf
 

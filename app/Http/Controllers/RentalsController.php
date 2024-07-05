@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Enums\RentalStatus;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreRenalRequest;
 use App\Models\Rental;
 use App\Models\Room;
@@ -28,8 +29,15 @@ class RentalsController extends Controller
 //        dd($request->all());
         $rental = new Rental($request->all());
 
-        $rental->save();
+//        dd($rental->canRent());
 
-        return redirect(route('home'));
+        if (!$rental->canRent($rental->email)) {
+            return redirect()->back()->with('error', "Twoja wcześniejsza rezerwacja oczekuje na zaakceptowanie.");
+        }
+        else {
+            $rental->save();
+
+            return redirect(route('home'))->with('success', "Twoja rezerwacja została pomyślnie złożona");
+        }
     }
 }

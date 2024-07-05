@@ -1,6 +1,6 @@
 <div class="sticky top-0 z-50">
     <nav class=" bg-white w-full">
-        <div class="hidden sm:block sm:flex sm:justify-center gap-10 p-4">
+        <div class="hidden sm:block sm:flex sm:justify-center gap-10 p-5">
             <a href="{{ route('home') }}">
                 <span class="transition text-gray-700 hover:text-gray-400 duration-200 {{Request::is('/') ? "text-emerald-300" : ""}}">Strona główna</span>
             </a>
@@ -22,7 +22,7 @@
                     @endif
                 </button>
             </div>
-            <div class="flex flex-col gap-y-8 p-8 bg-white text-center h-1/2 {{$this->isVisible ? "translate-y-0 overscroll-none" : "hidden -translate-y-8"}}">
+            <div class="flex flex-col gap-y-8 p-8 bg-white text-center w-full {{$this->isVisible ? "absolute z-51 translate-y-0" : "hidden -translate-y-5"}} transition ease-in-out duration-100">
                 <x-items.nav-link title="Strona główna" linkUrl="{{route('home')}}" />
                 <x-items.nav-link title="Pokoje" linkUrl="{{ route('rooms') }}" />
                 {{--    <x-items.nav-link title="Galeria" linkUrl="{{ route('gallery') }}" />--}}

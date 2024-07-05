@@ -25,8 +25,8 @@ class Rental extends Model
         'people_amount',
         'rental_start',
         'rental_end',
-        'payment',
-        'payment_type',
+//        'payment',
+//        'payment_type',
         'status',
     ];
 
@@ -43,5 +43,17 @@ class Rental extends Model
     public function room(): HasOne
     {
         return $this->hasOne(Room::class);
+    }
+
+    public function canRent():bool
+    {
+        $existingRental = Rental::where('email', '=', $this->email)
+            ->where('status', '=', RentalStatus::WAITING->value)
+            ->get()
+            ->toArray();
+
+        if ($existingRental) return false;
+
+        return true;
     }
 }

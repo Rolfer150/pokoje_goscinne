@@ -6,7 +6,7 @@
     id="{{ $name }}"
     name="{{ $name }}"
     {{ $attributes->merge([
-        'class' => 'p-4 max-w-2xl',
+        'class' => 'p-4 max-w',
     ]) }}>
     {{ $slot }}
 </select>

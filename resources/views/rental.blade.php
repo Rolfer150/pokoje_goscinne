@@ -1,6 +1,6 @@
 <x-layouts.app pageTitle="Rezerwacja">
     <x-header title="Rezerwacja" />
-    <div class="xs:pl-4 xs:pr-4 sm:pl-8 sm:pr-8 md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 mt-10  mb-10">
+    <div class="ml-4 mr-4 mt-10 mb-10 sm:ml-8 sm:mr-8 sm:mt-14 sm:mb-14 lg:ml-36 lg:mr-36 lg:mt-20 lg:mb-20">
         <form method="POST" action="{{ route('rental.store') }}" class="flex flex-col justify-between gap-y-2">
             @csrf
 
@@ -16,10 +16,10 @@
                 name="email"
                 placeholder="Wprowadź swój adres e-mail..." />
 
-            <label for="phone">Numer telefonu</label>
+            <label for="phone_number">Numer telefonu</label>
             <x-items.input-text
                 type="tel"
-                name="phone"
+                name="phone_number"
                 placeholder="Wprowadź swój numer telefonu..." />
             {{--            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" />--}}
 
@@ -28,16 +28,22 @@
                 type="number"
                 name="people_amount"
                 min="1"
+                max="4"
                 placeholder="Ilość gości..." />
 
             <livewire:data-picker />
 
-            <label for="rooms">Pokoje</label>
-            <x-items.select name="rooms">
+            <label for="room_id">Pokoje</label>
+            <x-items.select name="room_id">
+                <option selected>Wybierz pokój</option>
                 @foreach($roomsQuery as $room)
-                    <option name="{{ $room->id }}" value="{{ $room->slug }}">{{ $room->name }}</option>
+                    <option name="room" value="{{ $room->id }}">{{ $room->name }}</option>
                 @endforeach
             </x-items.select>
+
+            <select class="bg-no-repeat overscroll-none">
+                <option>ww</option>
+            </select>
 
             <label for="comments">Zapytania/uwagi</label>
             <x-items.textarea name="comments" placeholder="Wprowadź swoje zapytania/uwagi..."></x-items.textarea>

@@ -47,6 +47,8 @@ class RentalResource extends Resource
                     ->label('Data wysłania rezerwacji')
                     ->dateTime('d/m/Y', 'GMT+2')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('room_id')
+                    ->label('Pokój'),
                 Tables\Columns\TextColumn::make('rental_start')
                     ->label('Początek pobytu')
                     ->dateTime('d/m/Y', 'GMT+2')
@@ -80,5 +82,10 @@ class RentalResource extends Resource
         return [
             'index' => Pages\ManageRentals::route('/'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }
