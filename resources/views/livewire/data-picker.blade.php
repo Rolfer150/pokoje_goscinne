@@ -1,7 +1,7 @@
 @props([
     'id', 'name', 'type', 'placeholder' => '',
 ])
-<div class="flex justify-center">
+<div class="flex justify-center p-2 gap-x-4">
     <div class="">
         <label for="{{ $startDateName }}">Data rozpoczęcia pobytu</label>
         <input
@@ -13,7 +13,7 @@
             placeholder="{{ $placeholder }}"
             wire:model.lazy="startDate"
             {{ $attributes->merge([
-                'class' => 'p-4 rounded-sm mb-10 max-w-2xl',
+                'class' => 'p-2 rounded-md mb-10 w-full bg-slate-100 text-gray-400',
             ]) }} />
     </div>
 
@@ -27,7 +27,7 @@
             placeholder="{{ $placeholder }}"
             wire:model.lazy="endDate"
             {{ $attributes->merge([
-                'class' => 'p-4 rounded-sm mb-10 max-w-2xl',
+                'class' => 'p-2 rounded-md mb-10 w-full bg-slate-100 text-gray-400',
             ]) }} />
     </div>
 

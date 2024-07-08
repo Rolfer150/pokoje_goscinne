@@ -28,7 +28,7 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body class="antialiased relative bg-slate-100 text-[#1e212b]">
+    <body class="antialiased relative lato-regular text-gray-700">
         <livewire:navbar/>
         {{ $slot }}
         <x-footer />

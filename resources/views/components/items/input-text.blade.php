@@ -9,5 +9,5 @@
     min="{{ $min }}"
     placeholder="{{ $placeholder }}"
     {{ $attributes->merge([
-        'class' => 'p-4 rounded-sm mb-10 max-w',
+        'class' => 'p-2 rounded-md mb-4 text-gray-700 bg-slate-100 placeholder:text-gray-400',
     ]) }} />
