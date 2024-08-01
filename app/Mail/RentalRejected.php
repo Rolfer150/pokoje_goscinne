@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RentalMade extends Mailable
+class RentalRejected extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class RentalMade extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Złożenie rezerwacji',
+            subject: 'Rezerwacja odrzucona',
         );
     }
 
@@ -38,7 +38,7 @@ class RentalMade extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.rental-made',
+            view: 'mail.rental-rejected',
         );
     }
 

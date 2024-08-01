@@ -10,7 +10,7 @@ enum RentalStatus: string implements HasLabel, HasColor
     case WAITING = 'oczekiwanie';
     case ACCEPTED = 'zaakceptowano';
     case ENDED = 'zakończono';
-    case CANCELED = 'anulowano';
+    case REJECTED = 'odrzucono';
 
     public static function values(): array
     {
@@ -23,7 +23,7 @@ enum RentalStatus: string implements HasLabel, HasColor
             self::WAITING => 'Oczekiwanie',
             self::ACCEPTED => 'Zaakceptowano',
             self::ENDED => 'Zakończono',
-            self::CANCELED => 'Anulowano',
+            self::REJECTED => 'Odrzucono',
         };
     }
 
@@ -33,7 +33,7 @@ enum RentalStatus: string implements HasLabel, HasColor
             self::WAITING => 'gray',
             self::ACCEPTED => 'success',
             self::ENDED => 'gray',
-            self::CANCELED=> 'warning',
+            self::REJECTED=> 'danger',
         };
     }
 }

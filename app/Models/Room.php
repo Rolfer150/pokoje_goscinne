@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Room extends Model
 {
@@ -23,15 +23,22 @@ class Room extends Model
         'description',
         'accommodation_number',
         'price',
+        'is_occupied'
     ];
 
     protected $casts = [
         'image_path' => 'array',
     ];
 
-    public function rental(): HasMany
+    public function rental(): HasOne
     {
-        return $this->hasMany(Rental::class);
+        return $this->hasOne(Rental::class);
+    }
+
+    public function getFreeRooms()
+    {
+        return Room::where('is_occupied', true)
+            ->get();
     }
 
     public function roomFacilities(): BelongsToMany

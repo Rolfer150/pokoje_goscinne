@@ -8,6 +8,8 @@ use App\Filament\Resources\RentalResource\RelationManagers;
 use App\Models\Rental;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -18,7 +20,8 @@ class RentalResource extends Resource
 {
     protected static ?string $model = Rental::class;
     protected static ?string $navigationIcon = 'heroicon-o-bookmark';
-
+    protected static ?string $modelLabel = 'rezerwacja';
+    protected static ?string $pluralModelLabel = 'rezerwacje';
     protected static ?string $navigationLabel = 'Rezerwacje';
 
     public static function form(Form $form): Form
@@ -47,7 +50,7 @@ class RentalResource extends Resource
                     ->label('Data wysłania rezerwacji')
                     ->dateTime('d/m/Y', 'GMT+2')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('room_id')
+                Tables\Columns\TextColumn::make('room.name')
                     ->label('Pokój'),
                 Tables\Columns\TextColumn::make('rental_start')
                     ->label('Początek pobytu')
@@ -67,6 +70,7 @@ class RentalResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -77,10 +81,29 @@ class RentalResource extends Resource
             ]);
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('name')
+                    ->label('Imię i nazwisko'),
+                TextEntry::make('room.name')
+                    ->label('Nazwa pokoju'),
+                TextEntry::make('email')
+                    ->label('Adres e-mail'),
+                TextEntry::make('phone_number')
+                    ->label('Numer telefonu'),
+                TextEntry::make('comments')
+                    ->label('Zapytania/uwagi')
+                    ->columnSpanFull(),
+            ]);
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ManageRentals::route('/'),
+//            'view' => Pages\ViewRental::route('/{record}'),
         ];
     }
 

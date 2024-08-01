@@ -21,6 +21,7 @@ class RoomResource extends Resource
 
     protected static ?string $title = 'Custom Page Title';
     protected static ?string $modelLabel = 'pokój';
+    protected static ?string $pluralLabel = 'Pokoje';
     protected static ?string $navigationLabel = 'Pokoje';
 
     protected static ?string $navigationGroup = 'Modyfikowanie danych obiektu noclegowego';
@@ -58,19 +59,21 @@ class RoomResource extends Resource
                     ->numeric()
                     ->suffix('zł')
                     ->rules('regex:/^\d{1,6}(\.\d{0,2})?$/'),
-                Forms\Components\CheckboxList::make('room_facility_id')
+                Forms\Components\CheckboxList::make('room_facilities')
+                    ->relationship('roomFacilities', 'name')
                     ->label("Udogodnienia")
                     ->searchable()
-                    ->relationship('roomFacilities', 'name')
-                    ->columns(2)
-                    ->gridDirection('row')
-                    ->required(),
+                    ->columns(3)
+                    ->gridDirection('column')
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image_path')
                     ->label("Zdjęcia")
                     ->multiple()
                     ->directory('room-images')
                     ->preserveFilenames()
-                    ->image(),
+                    ->image()
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -93,12 +96,13 @@ class RoomResource extends Resource
                     ->label('Cena za dobę')
                     ->suffix('zł')
                     ->sortable(),
-                Tables\Columns\IconColumn::make('isOccupied')
+                Tables\Columns\IconColumn::make('is_occupied')
                     ->label('Czy jest zajęte?')
                     ->icon(fn (string $state): string => match ($state) {
                         '0' => 'heroicon-o-lock-open',
                         '1' => 'heroicon-o-lock-closed',
-                    }),
+                    })
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Utworzono')
                     ->dateTime('d/m/Y')
@@ -114,6 +118,7 @@ class RoomResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
             ])

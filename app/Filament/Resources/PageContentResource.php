@@ -19,7 +19,7 @@ class PageContentResource extends Resource
     protected static ?string $model = PageContent::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $pluralModelLabel = 'zawartości strony';
     protected static ?string $navigationLabel = 'Zawartość strony';
 
     public static function form(Form $form): Form

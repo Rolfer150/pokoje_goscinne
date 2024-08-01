@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="flex flex-col mb-4">
-                    <label for="comments">Zapytania/uwagi</label>
+                    <label for="comments">Uwagi (można podać w punktach)</label>
                     <x-items.textarea name="comments" placeholder="Wprowadź swoje zapytania/uwagi..."></x-items.textarea>
                 </div>
 

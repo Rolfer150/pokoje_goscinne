@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('accommodation_number');
             $table->float('price');
             $table->integer('apartment_size');
-            $table->boolean('isOccupied')->default(false);
+            $table->boolean('is_occupied')->default(false);
             $table->timestamps();
         });
     }

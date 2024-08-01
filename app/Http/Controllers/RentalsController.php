@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Enums\RentalStatus;
-use Illuminate\Http\Request;
+
 use App\Http\Requests\StoreRenalRequest;
 use App\Models\Rental;
 use App\Models\Room;
@@ -11,9 +10,9 @@ use Illuminate\View\View;
 class RentalsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show the form for creating a new resource.
      */
-    public function index(): View
+    public function create(): View
     {
         $roomsQuery = Room::query()
             ->select('id', 'name')
@@ -28,15 +27,16 @@ class RentalsController extends Controller
     {
 //        dd($request->all());
         $rental = new Rental($request->all());
-
-//        dd($rental->canRent());
+        $rental->comments = $request->comments;
+//        dd($rental->comments);
 
         if (!$rental->canRent($rental->email)) {
             return redirect()->back()->with('error', "Twoja wcześniejsza rezerwacja oczekuje na zaakceptowanie.");
         }
         else {
+            Room::where('id', $rental->room_id)
+                ->update(['is_occupied' => true]);
             $rental->save();
-
             return redirect(route('home'))->with('success', "Twoja rezerwacja została pomyślnie złożona");
         }
     }

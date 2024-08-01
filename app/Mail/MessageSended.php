@@ -2,21 +2,23 @@
 
 namespace App\Mail;
 
+use App\Models\Message;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RentalCanceled extends Mailable
+class MessageSended extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(protected Message $message)
     {
         //
     }
@@ -27,7 +29,8 @@ class RentalCanceled extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Rental Canceled',
+            subject: 'Message Sended',
+            from: new Address($this->message->email, $this->message->name),
         );
     }
 
@@ -37,7 +40,11 @@ class RentalCanceled extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.message-sent',
+            with: [
+                'topic' => $this->message->topic,
+                'messageContent' => $this->message->content
+            ]
         );
     }
 

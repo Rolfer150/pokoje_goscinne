@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreContactRequest extends FormRequest
+class StoreMessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,12 +23,10 @@ class StoreContactRequest extends FormRequest
     {
         return [
             'name' => 'max:100',
-            'email' => 'email',
-            'phone_number' => 'min:100000000|max:999999999',
-            'comments' => 'max:6400',
-            'people_amount' => 'required|min:1',
-            'rental_start' => 'required',
-            'rental_end' => 'required',
+            'email' => 'required_without:phone_number|nullable|email',
+            'phone_number' => 'required_without:email|nullable|digits:9',
+            'topic' => 'required|max:32',
+            'content' => 'required|max:6400',
         ];
     }
 }

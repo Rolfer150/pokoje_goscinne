@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Enums\PaymentType;
 use App\Enums\RentalStatus;
+use App\Observers\RentalObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[ObservedBy([RentalObserver::class])]
 class Rental extends Model
 {
     use HasFactory;
@@ -40,9 +42,9 @@ class Rental extends Model
         'status' => RentalStatus::class,
     ];
 
-    public function room(): HasOne
+    public function room(): BelongsTo
     {
-        return $this->hasOne(Room::class);
+        return $this->belongsTo(Room::class);
     }
 
     public function canRent():bool

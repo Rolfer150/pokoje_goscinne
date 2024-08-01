@@ -10,6 +10,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use Guava\FilamentIconPicker\Tables\IconColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -23,12 +25,14 @@ class MainFacilityResource extends Resource
 
     protected static ?string $navigationGroup = 'Modyfikowanie danych obiektu noclegowego';
 
-    protected static ?string $modelLabel = 'udogodnienie (apartament)';
+    protected static ?string $pluralModelLabel = 'udogodnienia (apartament)';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label('Nazwa udogodnienia'),
+                IconPicker::make('icon')
             ]);
     }
 
@@ -37,7 +41,10 @@ class MainFacilityResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                ->label('Nazwa'),
+                    ->label('Nazwa')
+                    ->searchable(),
+                IconColumn::make('icon')
+                    ->label('Ikonka')
             ])
             ->filters([
                 //

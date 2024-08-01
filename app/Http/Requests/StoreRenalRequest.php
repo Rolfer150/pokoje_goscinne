@@ -23,11 +23,11 @@ class StoreRenalRequest extends FormRequest
     {
         return [
             'name' => 'max:100',
-            'email' => 'email',
-//            'phone' => 'min:100000000|max:999999999',
-            'comments' => 'max:6400',
+            'email' => 'required_without:phone_number|nullable|email',
+            'phone_number' => 'required_without:email|nullable|digits:9',
+            'comments' => 'required|max:6400',
             'people_amount' => 'required|min:1|max:4',
-//            'rooms' => 'required',
+            'room_id' => 'required',
             'rental_start' => 'required|date',
             'rental_end' => 'required|date',
         ];
