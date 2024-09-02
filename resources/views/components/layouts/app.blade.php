@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{{ $pageTitle }}</title>
+{{--        <link rel="icon" href="{{ asset('Images/logo_lecznicy.jpg') }}">--}}
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
