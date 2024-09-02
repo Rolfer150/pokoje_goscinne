@@ -49,16 +49,24 @@ class RoomResource extends Resource
                     ->label('Opis')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('accommodation_number')
-                    ->label('Liczba łóżek')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('price')
-                    ->label('Cena za dobę')
-                    ->required()
-                    ->numeric()
-                    ->suffix('zł')
-                    ->rules('regex:/^\d{1,6}(\.\d{0,2})?$/'),
+                Forms\Components\Group::make([
+                    Forms\Components\TextInput::make('accommodation_number')
+                        ->label('Liczba łóżek')
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\TextInput::make('apartment_size')
+                        ->label('Wielkość apartamentu')
+                        ->required()
+                        ->numeric(),
+                    Forms\Components\TextInput::make('price')
+                        ->label('Cena za dobę')
+                        ->required()
+                        ->numeric()
+                        ->suffix('zł')
+                        ->rules('regex:/^\d{1,6}(\.\d{0,2})?$/'),
+                ])
+                    ->columns(3)
+                    ->columnSpanFull(),
                 Forms\Components\CheckboxList::make('room_facilities')
                     ->relationship('roomFacilities', 'name')
                     ->label("Udogodnienia")

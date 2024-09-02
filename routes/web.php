@@ -38,13 +38,13 @@ Route::controller(RentalsController::class)
     ->prefix('/rezerwacja')
     ->name('rental')
     ->group(function (){
-        Route::get('/', 'create');
+        Route::get('/', 'create')->name('.create');
         Route::post('/store', 'store')->name('.store');
 });
 Route::controller(MessageController::class)
     ->prefix('/kontakt')
     ->name('message')
     ->group(function (){
-        Route::get('/', 'create');
+        Route::get('/', 'create')->name('.create');
         Route::post('/store', 'store')->name('.store');
     });

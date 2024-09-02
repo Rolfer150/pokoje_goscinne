@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Room;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,5 +25,12 @@ class DatabaseSeeder extends Seeder
             RoomFacilitySeeder::class,
             RoomSeeder::class,
         ]);
+
+        $roomFacilities = \App\Models\RoomFacility::all();
+        Room::factory(4)
+            ->create()
+            ->each(function (Room $room) use ($roomFacilities) {
+                $room->roomFacilities()->saveMany($roomFacilities->random(3));
+            });
     }
 }

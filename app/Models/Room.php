@@ -23,6 +23,7 @@ class Room extends Model
         'description',
         'accommodation_number',
         'price',
+        'apartment_size',
         'is_occupied'
     ];
 
@@ -55,5 +56,14 @@ class Room extends Model
                 'room_room_facility.room_facility_id')
             ->where('room_room_facility.room_id', '=', $roomId)
             ->pluck('name');
+    }
+
+    public function getURLImages($image)
+    {
+        if (str_starts_with($image, 'http')) {
+            return $image;
+        }
+
+        return '/storage/' . $image;
     }
 }

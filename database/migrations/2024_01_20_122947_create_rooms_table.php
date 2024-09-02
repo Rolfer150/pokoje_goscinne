@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name', 24);
             $table->string('slug', 48)->unique();
-            $table->string('image_path', 2048)->default('[]');
+            $table->json('image_path')->nullable();
             $table->longText('description');
             $table->integer('accommodation_number');
-            $table->float('price');
+            $table->decimal('price', 5);
             $table->integer('apartment_size');
             $table->boolean('is_occupied')->default(false);
             $table->timestamps();

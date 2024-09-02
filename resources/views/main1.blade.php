@@ -5,7 +5,7 @@
         <h2 class="text-3xl text-white text-center">Sprawdź naszą ofertę</h2>
         <div class="flex w-full justify-between">
             <x-items.nav-link class="text-xl text-white text-center bg-emerald-400 place-self-center p-4 rounded-md" title="Cennik" linkUrl="{{ route('price_list') }}" />
-            <x-items.nav-link class="text-xl text-white text-center bg-emerald-400 place-self-center p-4 rounded-md" title="Cennik" linkUrl="{{ route('rental') }}" />
+            <x-items.nav-link class="text-xl text-white text-center bg-emerald-400 place-self-center p-4 rounded-md" title="Cennik" linkUrl="{{ route('rental.create') }}" />
         </div>
     </div>
 </main>

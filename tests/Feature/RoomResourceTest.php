@@ -4,12 +4,14 @@ namespace Tests\Feature;
 
 use App\Filament\Resources\RoomResource;
 use App\Models\Room;
+use App\Models\RoomFacility;
 use App\Models\User;
 use Database\Seeders\RoomSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class RoomResourceTest extends TestCase
@@ -24,8 +26,8 @@ class RoomResourceTest extends TestCase
         parent::setUp();
 
         $this->seed();
-        $this->adminUser = User::factory()->create();
-        $this->actingAs($this->adminUser)->isAuthenticated();
+        $adminUser = User::factory()->create();
+        $this->actingAs($adminUser)->isAuthenticated();
     }
 
     /**
@@ -56,4 +58,36 @@ class RoomResourceTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * Test tworzenia nowego pokoju.
+     */
+    public function test_can_create_new_room(): void
+    {
+        $newRoom = Room::factory()->make();
+        $roomFacilities = RoomFacility::all();
+
+        Livewire::test(RoomResource\Pages\CreateRoom::class)
+            ->fillForm([
+                'name' => $newRoom->name,
+                'slug' => $newRoom->slug,
+                'description' => $newRoom->description,
+                'accommodation_number' => $newRoom->accommodation_number,
+                'price' => $newRoom->price,
+                'apartment_size' => $newRoom->apartment_size,
+                'room_facilities' => $roomFacilities->random(3)->pluck('id')->toArray()
+            ])
+            ->call('create')
+            ->assertHasNoFormErrors();
+
+        $this->assertDatabaseHas('rooms', [
+            'name' => $newRoom->name,
+            'slug' => $newRoom->slug,
+            'description' => $newRoom->description,
+            'price' => $newRoom->price,
+            'accommodation_number' => $newRoom->accommodation_number,
+        ]);
+    }
+
+
 }

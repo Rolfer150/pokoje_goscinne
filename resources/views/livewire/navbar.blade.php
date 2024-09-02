@@ -10,8 +10,8 @@
             <x-items.nav-link title="Pokoje" linkUrl="{{ route('rooms') }}" />
             {{--    <x-items.nav-link title="Galeria" linkUrl="{{ route('gallery') }}" />--}}
             <x-items.nav-link title="Cennik" linkUrl="{{ route('price_list') }}" />
-            <x-items.nav-link title="Rezerwacja" linkUrl="{{ route('rental') }}"/>
-            <x-items.nav-link title="Kontakt" linkUrl="{{ route('message') }}" />
+            <x-items.nav-link title="Rezerwacja" linkUrl="{{ route('rental.create') }}"/>
+            <x-items.nav-link title="Kontakt" linkUrl="{{ route('message.create') }}" />
         </div>
 
         <div class="sm:hidden">
@@ -30,8 +30,8 @@
                 <x-items.nav-link title="Pokoje" linkUrl="{{ route('rooms') }}" />
                 {{--    <x-items.nav-link title="Galeria" linkUrl="{{ route('gallery') }}" />--}}
                 <x-items.nav-link title="Cennik" linkUrl="{{ route('price_list') }}" />
-                <x-items.nav-link title="Rezerwacja" linkUrl="{{ route('rental') }}"/>
-                <x-items.nav-link title="Kontakt" linkUrl="{{ route('message') }}" />
+                <x-items.nav-link title="Rezerwacja" linkUrl="{{ route('rental.create') }}"/>
+                <x-items.nav-link title="Kontakt" linkUrl="{{ route('message.create') }}" />
             </div>
         </div>
     </nav>
