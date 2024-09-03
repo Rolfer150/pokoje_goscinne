@@ -36,7 +36,7 @@ class RoomResourceTest extends TestCase
     public function test_gets_index_page(): void
     {
         $response = $this->get(RoomResource::getUrl('index'));
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     /**
@@ -45,7 +45,7 @@ class RoomResourceTest extends TestCase
     public function test_gets_create_page(): void
     {
         $response = $this->get(RoomResource::getUrl('create'));
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     /**
@@ -56,7 +56,7 @@ class RoomResourceTest extends TestCase
         $room = Room::first();
         $response = $this->get(RoomResource::getUrl('edit', ['record' => $room]));
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     /**

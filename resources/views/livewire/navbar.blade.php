@@ -4,14 +4,12 @@
             <a href="{{ route('home') }}">
                 <x-filament-panels::logo class="fixed left-0 ml-6"/>
             </a>
-            <a href="{{ route('home') }}">
-                <span class="transition text-gray-700 hover:text-gray-400 duration-200 {{Request::is('/') ? "text-emerald-300" : ""}}">Strona główna</span>
-            </a>
-            <x-items.nav-link title="Pokoje" linkUrl="{{ route('rooms') }}" />
+            <x-items.nav-link :href="route('home')" :active="request()->routeIs('home')">Strona główna</x-items.nav-link>
+            <x-items.nav-link :href="route('room.index')" :active="request()->routeIs('room.index')">Pokoje</x-items.nav-link>
             {{--    <x-items.nav-link title="Galeria" linkUrl="{{ route('gallery') }}" />--}}
-            <x-items.nav-link title="Cennik" linkUrl="{{ route('price_list') }}" />
-            <x-items.nav-link title="Rezerwacja" linkUrl="{{ route('rental.create') }}"/>
-            <x-items.nav-link title="Kontakt" linkUrl="{{ route('message.create') }}" />
+            <x-items.nav-link :href="route('price_list')" :active="request()->routeIs('price_list')">Cennik</x-items.nav-link>
+            <x-items.nav-link :href="route('rental.create')" :active="request()->routeIs('rental.create')">Rezerwacja</x-items.nav-link>
+            <x-items.nav-link :href="route('message.create')" :active="request()->routeIs('message.create')">Kontakt</x-items.nav-link>
         </div>
 
         <div class="sm:hidden">
@@ -25,13 +23,13 @@
                 </button>
                 <x-filament-panels::logo />
             </div>
-            <div class="flex flex-col gap-y-8 p-8 bg-white text-center w-full {{$this->isVisible ? "absolute z-51 translate-y-0" : "hidden -translate-y-5"}} transition ease-in-out duration-100">
-                <x-items.nav-link title="Strona główna" linkUrl="{{route('home')}}" />
-                <x-items.nav-link title="Pokoje" linkUrl="{{ route('rooms') }}" />
+            <div class="flex flex-col gap-y-8 p-8 bg-white text-center w-full transition ease-in-out duration-100 {{$this->isVisible ? "absolute z-51 translate-y-0" : "hidden -translate-y-5"}}">
+                <x-items.nav-link :href="route('home')" :active="request()->routeIs('home')">Strona główna</x-items.nav-link>
+                <x-items.nav-link :href="route('room.index')" :active="request()->routeIs('room.index')">Pokoje</x-items.nav-link>
                 {{--    <x-items.nav-link title="Galeria" linkUrl="{{ route('gallery') }}" />--}}
-                <x-items.nav-link title="Cennik" linkUrl="{{ route('price_list') }}" />
-                <x-items.nav-link title="Rezerwacja" linkUrl="{{ route('rental.create') }}"/>
-                <x-items.nav-link title="Kontakt" linkUrl="{{ route('message.create') }}" />
+                <x-items.nav-link :href="route('price_list')" :active="request()->routeIs('price_list')">Cennik</x-items.nav-link>
+                <x-items.nav-link :href="route('rental.create')" :active="request()->routeIs('rental.create')">Rezerwacja</x-items.nav-link>
+                <x-items.nav-link :href="route('message.create')" :active="request()->routeIs('message.create')">Kontakt</x-items.nav-link>
             </div>
         </div>
     </nav>

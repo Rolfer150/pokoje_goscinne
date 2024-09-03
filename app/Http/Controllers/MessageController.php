@@ -16,7 +16,7 @@ class MessageController extends Controller
      */
     public function create(): View
     {
-        return view('message');
+        return view('message.create');
     }
 
     /**

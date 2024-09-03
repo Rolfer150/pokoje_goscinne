@@ -9,6 +9,9 @@ export default {
       "./resources/**/*.vue",
     ],
     theme: {
+      fontFamily: {
+          'niramit': ['Niramit', 'regular']
+      },
       extend: {
           screens: {
               xs: "420px",

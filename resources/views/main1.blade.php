@@ -4,8 +4,8 @@
         <h1 class="text-6xl text-white font-bold mt-[20vh]">Witamy na naszej stronie!</h1>
         <h2 class="text-3xl text-white text-center">Sprawdź naszą ofertę</h2>
         <div class="flex w-full justify-between">
-            <x-items.nav-link class="text-xl text-white text-center bg-emerald-400 place-self-center p-4 rounded-md" title="Cennik" linkUrl="{{ route('price_list') }}" />
-            <x-items.nav-link class="text-xl text-white text-center bg-emerald-400 place-self-center p-4 rounded-md" title="Cennik" linkUrl="{{ route('rental.create') }}" />
+            <x-items.nav-link class="text-xl text-white text-center bg-emerald-400 place-self-center p-4 rounded-md" :href="route('price_list')">Cennik</x-items.nav-link>
+            <x-items.nav-link class="text-xl text-white text-center bg-emerald-400 place-self-center p-4 rounded-md" :href="route('rental.create')">Zarezerwuj już teraz</x-items.nav-link>
         </div>
     </div>
 </main>

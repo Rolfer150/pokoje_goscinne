@@ -15,6 +15,7 @@ class DataPicker extends Component
     public $endDate;
     public $maxStart;
     public $minEnd;
+    public $maxEnd;
 
     public function mount($startDateName = 'rental_start', $endDateName = 'rental_end')
     {
@@ -28,11 +29,13 @@ class DataPicker extends Component
         return view('livewire.data-picker');
     }
 
-    public function getMinStartDate() {
+    public function getMinStartDate()
+    {
         return $this->todayDate->format('Y-m-d');
     }
 
-    public function getMaxStartDate() {
+    public function getMaxStartDate()
+    {
         if($this->endDate) {
             $this->maxStart = Carbon::parse($this->endDate)->subDay();
             return $this->maxStart->format('Y-m-d');
@@ -40,12 +43,23 @@ class DataPicker extends Component
         return null;
     }
 
-    public function getMinEndDate() {
+    public function getMinEndDate()
+    {
+//        dd($this->startDate);
         if($this->startDate) {
             $this->minEnd = Carbon::parse($this->startDate)->addDay();
             return $this->minEnd->format('Y-m-d');
         }
         return $this->todayDate->tomorrow()->format('Y-m-d');
+    }
+
+    public function getMaxEndDate()
+    {
+        if ($this->startDate) {
+            $this->maxEnd = Carbon::parse($this->startDate)->addDays(30);
+            return $this->maxEnd->format('Y-m-d');
+        }
+        return null;
     }
 
 }

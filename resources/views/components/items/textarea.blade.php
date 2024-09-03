@@ -9,5 +9,9 @@
     cols="{{ $cols }}"
     placeholder="{{ $placeholder }}"
     {{ $attributes->merge([
-    'class' => 'p-2 rounded-md mb-4 text-gray-700 bg-slate-100',
+    'class' => 'p-2 rounded-md text-gray-700 border-2 focus:outline-emerald-600',
 ]) }} >{{ $slot }}</textarea>
+
+@if($errors->has($name))
+    <p class="text-sm text-red-500">{{ $errors->first($name) }}</p>
+@endif

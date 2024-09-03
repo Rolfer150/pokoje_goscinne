@@ -17,7 +17,7 @@ class RentalsController extends Controller
         $roomsQuery = Room::query()
             ->select('id', 'name')
             ->get();
-        return view('rental', compact('roomsQuery'));
+        return view('rental.create', compact('roomsQuery'));
     }
 
     /**
@@ -25,10 +25,8 @@ class RentalsController extends Controller
      */
     public function store(StoreRenalRequest $request)
     {
-//        dd($request->all());
         $rental = new Rental($request->all());
         $rental->comments = $request->comments;
-//        dd($rental->comments);
 
         if (!$rental->canRent($rental->email)) {
             return redirect()->back()->with('error', "Twoja wcześniejsza rezerwacja oczekuje na zaakceptowanie.");

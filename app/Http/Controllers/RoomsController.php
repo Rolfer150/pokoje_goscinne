@@ -17,6 +17,6 @@ class RoomsController extends Controller
 
 //        dd($roomsQuery);
 
-        return view('rooms', compact('roomsQuery'));
+        return view('room.index', compact('roomsQuery'));
     }
 }

@@ -42,14 +42,17 @@ class RentalResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->label('Adres e-mail')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('phone_number')
                     ->label('Numer telefonu')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data wysłania rezerwacji')
                     ->dateTime('d/m/Y', 'GMT+2')
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('room.name')
                     ->label('Pokój'),
                 Tables\Columns\TextColumn::make('rental_start')
@@ -59,8 +62,7 @@ class RentalResource extends Resource
                 Tables\Columns\TextColumn::make('rental_end')
                     ->label('Zakończenie pobytu')
                     ->dateTime('d/m/Y', 'GMT+2')
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->label('Status rezerwacji')
                     ->sortable()

@@ -12,7 +12,7 @@ class RoomFacilityRoomRelationshipTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test relacji wiele-do-wielu tabel "rooms" i "room_facilities".
+     * Test relacji wiele-do-wielu tabel "room" i "room_facilities".
      */
     public function test_room_facilities_belongs_to_room(): void
     {

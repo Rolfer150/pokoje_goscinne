@@ -6,7 +6,7 @@
     id="{{ $name }}"
     name="{{ $name }}"
     {{ $attributes->merge([
-        'class' => 'p-2 rounded-md mb-4 bg-slate-100 text-gray-400 bg-no-repeat text-right',
+        'class' => 'p-2 rounded-md mb-4 text-gray-700 border-2 focus:outline-emerald-600 bg-no-repeat text-right',
     ]) }}>
     {{ $slot }}
 </select>

@@ -24,6 +24,7 @@ class Rental extends Model
         'name',
         'email',
         'phone_number',
+        'comments',
         'people_amount',
         'rental_start',
         'rental_end',
