@@ -14,10 +14,7 @@ class RentalsController extends Controller
      */
     public function create(): View
     {
-        $roomsQuery = Room::query()
-            ->select('id', 'name')
-            ->get();
-        return view('rental.create', compact('roomsQuery'));
+        return view('rental.create');
     }
 
     /**

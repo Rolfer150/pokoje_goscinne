@@ -3,19 +3,20 @@
 namespace App\Livewire;
 
 use Carbon\Carbon;
+use Illuminate\View\View;
 use Livewire\Component;
 
-class DataPicker extends Component
+class DatePicker extends Component
 {
     public string $startDateName;
     public string $endDateName;
     public string $type = 'date';
-    public $todayDate;
-    public $startDate;
-    public $endDate;
-    public $maxStart;
-    public $minEnd;
-    public $maxEnd;
+    public string $startDate = '';
+    public string $endDate = '';
+    public Carbon $todayDate;
+    public Carbon $maxStart;
+    public Carbon $minEnd;
+    public Carbon $maxEnd;
 
     public function mount($startDateName = 'rental_start', $endDateName = 'rental_end')
     {
@@ -24,17 +25,17 @@ class DataPicker extends Component
         $this->endDateName = $endDateName;
     }
 
-    public function render()
+    public function render(): View
     {
-        return view('livewire.data-picker');
+        return view('livewire.date-picker');
     }
 
-    public function getMinStartDate()
+    public function getMinStartDate(): string
     {
         return $this->todayDate->format('Y-m-d');
     }
 
-    public function getMaxStartDate()
+    public function getMaxStartDate(): ?string
     {
         if($this->endDate) {
             $this->maxStart = Carbon::parse($this->endDate)->subDay();
@@ -43,7 +44,7 @@ class DataPicker extends Component
         return null;
     }
 
-    public function getMinEndDate()
+    public function getMinEndDate(): string
     {
 //        dd($this->startDate);
         if($this->startDate) {
@@ -53,7 +54,7 @@ class DataPicker extends Component
         return $this->todayDate->tomorrow()->format('Y-m-d');
     }
 
-    public function getMaxEndDate()
+    public function getMaxEndDate(): ?string
     {
         if ($this->startDate) {
             $this->maxEnd = Carbon::parse($this->startDate)->addDays(30);
@@ -62,4 +63,13 @@ class DataPicker extends Component
         return null;
     }
 
+    public function updatedStartDate()
+    {
+        $this->dispatch('start-date', $this->startDate);
+    }
+
+    public function updatedEndDate()
+    {
+        $this->dispatch('end-date', $this->endDate);
+    }
 }

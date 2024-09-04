@@ -24,7 +24,7 @@ class RoomFactory extends Factory
             'slug' => Str::slug($name),
             'image_path' => $this->generateImagePaths(),
             'description' => fake()->text(),
-            'accommodation_number' => fake()->numberBetween(1,4),
+            'bed_amount' => fake()->numberBetween(1,4),
             'price' => fake()->randomFloat(2, 30, 130),
             'apartment_size' => fake()->numberBetween(10, 40),
         ];

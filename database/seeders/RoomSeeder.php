@@ -23,7 +23,7 @@ class RoomSeeder extends Seeder
                 mi nec lobortis pellentesque, ipsum risus luctus orci, sed pellentesque ante tellus
                 nec lectus. Suspendisse pharetra consectetur lacus, in iaculis tortor.
                 Suspendisse aliquam ultrices ullamcorper.',
-                'accommodation_number' => 2,
+                'bed_amount' => 2,
                 'price' => 80,
                 'apartment_size' => 18,
             ],
@@ -36,7 +36,7 @@ class RoomSeeder extends Seeder
                 mi nec lobortis pellentesque, ipsum risus luctus orci, sed pellentesque ante tellus
                 nec lectus. Suspendisse pharetra consectetur lacus, in iaculis tortor.
                 Suspendisse aliquam ultrices ullamcorper.',
-                'accommodation_number' => 3,
+                'bed_amount' => 3,
                 'price' => 100,
                 'apartment_size' => 25,
             ],
@@ -49,7 +49,7 @@ class RoomSeeder extends Seeder
                 mi nec lobortis pellentesque, ipsum risus luctus orci, sed pellentesque ante tellus
                 nec lectus. Suspendisse pharetra consectetur lacus, in iaculis tortor.
                 Suspendisse aliquam ultrices ullamcorper.',
-                'accommodation_number' => 4,
+                'bed_amount' => 4,
                 'price' => 120,
                 'apartment_size' => 35,
             ]

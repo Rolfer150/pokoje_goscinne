@@ -50,7 +50,7 @@ class RoomResource extends Resource
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\Group::make([
-                    Forms\Components\TextInput::make('accommodation_number')
+                    Forms\Components\TextInput::make('bed_amount')
                         ->label('Liczba łóżek')
                         ->required()
                         ->numeric(),
@@ -96,7 +96,7 @@ class RoomResource extends Resource
                     ->label('Adres URL')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('accommodation_number')
+                Tables\Columns\TextColumn::make('bed_amount')
                     ->label('Liczba łóżek')
                     ->numeric()
                     ->sortable(),

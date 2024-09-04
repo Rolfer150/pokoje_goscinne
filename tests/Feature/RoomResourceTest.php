@@ -72,7 +72,7 @@ class RoomResourceTest extends TestCase
                 'name' => $newRoom->name,
                 'slug' => $newRoom->slug,
                 'description' => $newRoom->description,
-                'accommodation_number' => $newRoom->accommodation_number,
+                'bed_amount' => $newRoom->bed_amount,
                 'price' => $newRoom->price,
                 'apartment_size' => $newRoom->apartment_size,
                 'room_facilities' => $roomFacilities->random(3)->pluck('id')->toArray()
@@ -85,7 +85,7 @@ class RoomResourceTest extends TestCase
             'slug' => $newRoom->slug,
             'description' => $newRoom->description,
             'price' => $newRoom->price,
-            'accommodation_number' => $newRoom->accommodation_number,
+            'bed_amount' => $newRoom->bed_amount,
         ]);
     }
 

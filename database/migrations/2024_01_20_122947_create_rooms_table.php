@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug', 48)->unique();
             $table->json('image_path')->nullable();
             $table->longText('description');
-            $table->integer('accommodation_number');
+            $table->integer('bed_amount');
             $table->decimal('price', 5);
             $table->integer('apartment_size');
             $table->boolean('is_occupied')->default(false);
