@@ -1,5 +1,5 @@
 @props([
-     'name', 'type', 'placeholder' => '', 'min' => ''
+    'name', 'type', 'min', 'max', 'placeholder'
 ])
 
 <input
@@ -7,10 +7,11 @@
     name="{{ $name }}"
     type="{{ $type }}"
     min="{{ $min }}"
+    max="{{ $max }}"
     placeholder="{{ $placeholder }}"
-    {{ $attributes->merge([
-        'class' => 'p-2 rounded-md text-gray-700 border-2 focus:outline-emerald-600 placeholder:text-gray-400',
-    ]) }} />
+{{ $attributes->merge([
+    'class' => 'p-2 rounded-md w-full bg-emerald-500',
+]) }} />
 @if($errors->has($name))
     <p class="text-sm text-red-500">{{ $errors->first($name) }}</p>
 @endif

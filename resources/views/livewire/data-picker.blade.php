@@ -4,20 +4,13 @@
 <div class="flex justify-center p-2 gap-x-4">
     <div>
         <label for="{{ $startDateName }}" class="required">Data rozpoczęcia pobytu</label>
-        <input
-            id="{{ $startDateName }}"
+        <x-items.date-picker
             name="{{ $startDateName }}"
             type="{{ $type }}"
             min="{{ $this->getMinStartDate() }}"
             max="{{ $this->getMaxStartDate() }}"
             placeholder="{{ $placeholder }}"
-            wire:model.lazy="startDate"
-            {{ $attributes->merge([
-                'class' => 'p-2 rounded-md w-full bg-emerald-500',
-            ]) }} />
-        @if($errors->has($startDateName))
-            <p class="text-sm text-red-500">{{ $errors->first($startDateName) }}</p>
-        @endif
+            wire:model.lazy="startDate" />
     </div>
 
     <div>
