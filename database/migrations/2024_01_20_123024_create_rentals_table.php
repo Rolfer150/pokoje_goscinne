@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('rental_end');
 //            $table->float('payment');
 //            $table->enum('payment_type', PaymentType::values())->default(PaymentType::ON_PLACE->value);
-            $table->enum('status', RentalStatus::values())->default(RentalStatus::WAITING->value);
+            $table->enum('status', RentalStatus::values())->default(RentalStatus::ACTIVE->value);
             $table->timestamps();
         });
     }

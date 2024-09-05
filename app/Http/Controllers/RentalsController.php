@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRenalRequest;
 use App\Models\Rental;
-use App\Models\Room;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class RentalsController extends Controller
@@ -23,16 +23,15 @@ class RentalsController extends Controller
     public function store(StoreRenalRequest $request)
     {
         $rental = new Rental($request->all());
+//        dd($rental);
         $rental->comments = $request->comments;
 
         if (!$rental->canRent($rental->email)) {
-            return redirect()->back()->with('error', "Twoja wcześniejsza rezerwacja oczekuje na zaakceptowanie.");
+            return redirect()->back()->with('error', 'Twoja wcześniejsza rezerwacja oczekuje na zaakceptowanie!');
         }
         else {
-            Room::where('id', $rental->room_id)
-                ->update(['is_occupied' => true]);
             $rental->save();
-            return redirect(route('home'))->with('success', "Twoja rezerwacja została pomyślnie złożona");
+            return redirect()->back()->with('success', 'Twoja rezerwacja została pomyślnie złożona.');
         }
     }
 }

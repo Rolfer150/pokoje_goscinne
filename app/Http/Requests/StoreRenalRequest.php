@@ -45,7 +45,7 @@ class StoreRenalRequest extends FormRequest
         return [
             'name' => 'max:100',
             'email' => 'required_without:phone_number|nullable|email',
-            'phone_number' => 'required_without:email|nullable|regex:/^[0-9]{9}$/',
+            'phone_number' => 'required_without:email|nullable|',
             'comments' => 'max:6400',
             'people_amount' => 'required|min:1|max:4',
             'room_id' => 'required',

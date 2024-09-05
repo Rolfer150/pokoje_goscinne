@@ -7,8 +7,7 @@ use Filament\Support\Contracts\HasLabel;
 
 enum RentalStatus: string implements HasLabel, HasColor
 {
-    case WAITING = 'oczekiwanie';
-    case ACCEPTED = 'zaakceptowano';
+    case ACTIVE = 'aktywna';
     case ENDED = 'zakończono';
     case REJECTED = 'odrzucono';
 
@@ -20,8 +19,7 @@ enum RentalStatus: string implements HasLabel, HasColor
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::WAITING => 'Oczekiwanie',
-            self::ACCEPTED => 'Zaakceptowano',
+            self::ACTIVE => 'Aktywna',
             self::ENDED => 'Zakończono',
             self::REJECTED => 'Odrzucono',
         };
@@ -30,8 +28,7 @@ enum RentalStatus: string implements HasLabel, HasColor
     public function getColor(): string | array | null
     {
         return match ($this) {
-            self::WAITING => 'gray',
-            self::ACCEPTED => 'success',
+            self::ACTIVE => 'success',
             self::ENDED => 'gray',
             self::REJECTED=> 'danger',
         };

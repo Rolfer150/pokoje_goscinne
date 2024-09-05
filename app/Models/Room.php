@@ -25,7 +25,6 @@ class Room extends Model
         'bed_amount',
         'price',
         'apartment_size',
-        'is_occupied'
     ];
 
     protected $casts = [

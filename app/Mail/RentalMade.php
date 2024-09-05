@@ -39,6 +39,10 @@ class RentalMade extends Mailable
     {
         return new Content(
             view: 'mail.rental-made',
+            with: [
+                'rentalStart' => $this->rental->getFormattedDate($this->rental->rental_start),
+                'rentalEnd' => $this->rental->getFormattedDate($this->rental->rental_end)
+            ]
         );
     }
 

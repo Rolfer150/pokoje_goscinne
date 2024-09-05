@@ -12,6 +12,7 @@
 
     <section class="flex flex-col items-center">
         <h1 class="text-[54px] md:text-[80px] text-center md:text-left mb-6 text-emerald-400">Witaj,</h1>
-        <p class="text-2xl text-center md:text-left">Twoja rezerwacja została złożona. W najbliższym czasie otrzymasz potwierdzenie rezerwacji.</p>
+        <p class="text-2xl text-center md:text-left">Twoja rezerwacja została złożona.</p>
+        <p class="text-2xl text-center md:text-left">Data pobytu: {{ $rentalStart }} - {{ $rentalEnd }}</p>
     </section>
 </div>

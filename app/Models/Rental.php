@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\PaymentType;
 use App\Enums\RentalStatus;
 use App\Observers\RentalObserver;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -48,15 +49,13 @@ class Rental extends Model
         return $this->belongsTo(Room::class);
     }
 
-    public function canRent():bool
+    public function canRent($email):bool
     {
-        $existingRental = Rental::where('email', '=', $this->email)
-            ->where('status', '=', RentalStatus::WAITING->value)
-            ->get()
-            ->toArray();
+        return !Rental::where('email', '=', $email)->where('status', '=', true)->get()->toArray();
+    }
 
-        if ($existingRental) return false;
-
-        return true;
+    public function getFormattedDate($date): string
+    {
+        return Carbon::parse($date)->isoFormat('dddd, D MMMM YYYY');
     }
 }

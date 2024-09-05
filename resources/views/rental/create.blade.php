@@ -9,6 +9,15 @@
             </h3>
 
             <div class="bg-white sm:rounded-md p-2 md:p-6">
+                @if(session('error'))
+                    <div class="bg-red-400 p-4 mb-6 rounded-md">
+                        <h4 class="text-white text-lg text-center lg:text-left">{{ session('error') }}</h4>
+                    </div>
+                @elseif (session('success'))
+                    <div class="bg-emerald-400 p-4 mb-6 rounded-md">
+                        <h4 class="text-white text-lg text-center lg:text-left">{{ session('success') }}</h4>
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('rental.store') }}" class="flex flex-col justify-between gap-y-3">
                     @csrf
                     <livewire:rental-form />

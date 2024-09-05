@@ -42,11 +42,11 @@
 
         <div  class="flex flex-col p-2">
             <label for="room_id">Pokoje</label>
-            <input disabled class="p-2 rounded-md border-2 {{ $this->isPeopleAmountSet() ? 'hidden' : '' }}" />
+            <input disabled class="p-2 rounded-md border-2 {{ $this->isPeopleAmountSet() && $this->isStartEndDateSet() ? 'hidden' : '' }}" />
             <x-items.select
-                class="{{ $this->isPeopleAmountSet() ? '' : 'hidden' }}"
+                class="{{ $this->isPeopleAmountSet() && $this->isStartEndDateSet() ? '' : 'hidden' }}"
                 name="room_id">
-                <option selected disabled>Wybierz pokój</option>
+{{--                <option selected disabled>Wybierz pokój</option>--}}
                 @foreach($rooms as $room)
                     <option name="room" value="{{ $room->id }}">{{ $room->name }}</option>
                 @endforeach

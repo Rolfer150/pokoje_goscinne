@@ -7,7 +7,6 @@ use App\Mail\RentalAccepted;
 use App\Mail\RentalMade;
 use App\Mail\RentalRejected;
 use App\Models\Rental;
-use App\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,13 +28,7 @@ class RentalObserver
         if ($rental->rental_end > Carbon::now()->toDateString())
         {
             switch ($rental->status) {
-                case RentalStatus::ACCEPTED:
-                    Mail::to($rental->email)->queue(new RentalAccepted($rental));
-                    break;
                 case RentalStatus::REJECTED:
-                    Room::where('id', $rental->room_id)
-                        ->update(['is_occupied' => false]);
-
                     Mail::to($rental->email)->queue(new RentalRejected($rental));
                     break;
             }

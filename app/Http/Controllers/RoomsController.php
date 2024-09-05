@@ -11,7 +11,7 @@ class RoomsController extends Controller
     public function index(): View
     {
         $roomsQuery = Room::query()
-            ->select('id', 'name', 'price', 'description', 'image_path', 'apartment_size', 'accommodation_number')
+            ->select('id', 'name', 'price', 'description', 'image_path', 'apartment_size', 'bed_amount')
 //            ->with('roomFacilities')
             ->get();
 
