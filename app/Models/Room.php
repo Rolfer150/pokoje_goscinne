@@ -28,7 +28,7 @@ class Room extends Model
     ];
 
     protected $casts = [
-        'image_path' => 'array',
+        'image_path' => 'json',
     ];
 
     public function rentals(): HasMany
@@ -47,14 +47,19 @@ class Room extends Model
         return $this->belongsToMany(RoomFacility::class);
     }
 
-    public function getFacilities(int $roomId)
+    public function getPrice(): string
+    {
+        return str_replace('.', ',', $this->price) . ' zł';
+    }
+
+    public function getFacilities()
     {
         return RoomFacility::query()
             ->join('room_room_facility',
                 'room_facilities.id',
                 '=',
                 'room_room_facility.room_facility_id')
-            ->where('room_room_facility.room_id', '=', $roomId)
+            ->where('room_room_facility.room_id', '=', $this->id)
             ->pluck('name');
     }
 

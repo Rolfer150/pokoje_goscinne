@@ -8,7 +8,7 @@
                 Wiadomość o akceptacji zostanie wysłana w formie e-mail lub SMS.
             </h3>
 
-            <div class="bg-white sm:rounded-md p-2 md:p-6">
+            <div class="bg-white sm:rounded-md p-4 md:p-4 border-2 shadow-sm rounded-md">
                 @if(session('error'))
                     <div class="bg-red-400 p-4 mb-6 rounded-md">
                         <h4 class="text-white text-lg text-center lg:text-left">{{ session('error') }}</h4>
@@ -18,13 +18,14 @@
                         <h4 class="text-white text-lg text-center lg:text-left">{{ session('success') }}</h4>
                     </div>
                 @endif
-                <form method="POST" action="{{ route('rental.store') }}" class="flex flex-col justify-between gap-y-3">
+                <form method="POST" action="{{ route('rental.store') }}">
                     @csrf
                     <livewire:rental-form />
 
                     <x-forms.primary-button>Wyślij rezerwację</x-forms.primary-button>
                 </form>
-                <p class="required mt-2 ml-6 lg:ml-12"> - Pole jest wymagane</p>
+                <p class="required_field mt-2 ml-6 lg:ml-12"> - Pole jest wymagane do wypełnienia</p>
+                <p class="required_email_or_phone mt-2 ml-6 lg:ml-12"> - Pole "E-mail" lub "Numer telefonu" jest wymagane do wypełnienia</p>
             </div>
         </div>
     </div>

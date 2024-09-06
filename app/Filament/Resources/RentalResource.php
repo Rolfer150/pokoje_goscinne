@@ -69,7 +69,12 @@ class RentalResource extends Resource
                     ->badge(),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('aktywny_status')
+                    ->query(fn(Builder $query): Builder => $query->where('status', '=', 'aktywna'))->default(),
+                Tables\Filters\Filter::make('odrzucony_status')
+                    ->query(fn(Builder $query): Builder => $query->where('status', '=', 'odrzucono')),
+                Tables\Filters\Filter::make('zakończony_status')
+                    ->query(fn(Builder $query): Builder => $query->where('status', '=', 'zakończono'))
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

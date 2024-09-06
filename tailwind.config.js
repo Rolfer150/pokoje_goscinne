@@ -14,12 +14,9 @@ export default {
       },
       extend: {
           screens: {
-              xs: "420px",
-              sm: "680px",
-              md: "768px",
-              lg: "1024px",
-              xl: "1280px",
-              "2xl": "1536px"
+              'xs': '475px',
+              ...defaultTheme.screens,
+              '2xl': '1536px'
           },
           colors: {
               emerald: {

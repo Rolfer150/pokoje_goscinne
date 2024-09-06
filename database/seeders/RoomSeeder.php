@@ -17,6 +17,7 @@ class RoomSeeder extends Seeder
             [
                 'name' => 'Pokój dwuosobowy',
                 'slug' => 'pokoj-dwuosobowy',
+                'image_path' => $this->generateImagePaths(),
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Ut risus dui, imperdiet eget risus sed, vulputate interdum justo.
                 Proin vulputate magna malesuada pulvinar dapibus. Curabitur tempor,
@@ -30,6 +31,7 @@ class RoomSeeder extends Seeder
             [
                 'name' => 'Pokój trzyosobowy',
                 'slug' => 'pokoj-trzyosobowy',
+                'image_path' => $this->generateImagePaths(),
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Ut risus dui, imperdiet eget risus sed, vulputate interdum justo.
                 Proin vulputate magna malesuada pulvinar dapibus. Curabitur tempor,
@@ -43,6 +45,7 @@ class RoomSeeder extends Seeder
             [
                 'name' => 'Pokój czteroosobowy',
                 'slug' => 'pokoj-czteroosobowy',
+                'image_path' => $this->generateImagePaths(),
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Ut risus dui, imperdiet eget risus sed, vulputate interdum justo.
                 Proin vulputate magna malesuada pulvinar dapibus. Curabitur tempor,
@@ -59,5 +62,17 @@ class RoomSeeder extends Seeder
         {
             Room::create($value);
         }
+    }
+
+    private function generateImagePaths(): array
+    {
+        $images = [];
+        $imageCount = rand(1, 5);
+
+        for ($i = 0; $i < $imageCount; $i++) {
+            $images[] = fake()->imageUrl();
+        }
+
+        return $images;
     }
 }

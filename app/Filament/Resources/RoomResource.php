@@ -99,18 +99,12 @@ class RoomResource extends Resource
                 Tables\Columns\TextColumn::make('bed_amount')
                     ->label('Liczba łóżek')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('price')
                     ->label('Cena za dobę')
                     ->suffix('zł')
                     ->sortable(),
-                Tables\Columns\IconColumn::make('is_occupied')
-                    ->label('Czy jest zajęte?')
-                    ->icon(fn (string $state): string => match ($state) {
-                        '0' => 'heroicon-o-lock-open',
-                        '1' => 'heroicon-o-lock-closed',
-                    })
-                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Utworzono')
                     ->dateTime('d/m/Y')

@@ -27,16 +27,29 @@ input[type="date"]::-webkit-datetime-edit-fields-wrapper {
     color: white;
 }
 
-/* Gwiazdka */
-label.required:after {
+/* Gwiazdka (wypełnienie wymaganych pól) */
+label.required_field:after {
     content: '*';
     color: red;
     padding-left: 5px;
 }
 
-p.required:before {
+p.required_field:before {
     content: '*';
     color: red;
+    padding-right: 5px;
+}
+
+/* Gwiazdka (wypełnienie pola e-mail lub numer telefonu) */
+label.required_email_or_phone:after {
+    content: '*';
+    color: blue;
+    padding-left: 5px;
+}
+
+p.required_email_or_phone:before {
+    content: '*';
+    color: blue;
     padding-right: 5px;
 }
 

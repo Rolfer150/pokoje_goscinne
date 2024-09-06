@@ -21,7 +21,7 @@ class RoomFacilitySeeder extends Seeder
                 'name' => 'Dojście na wyższe piętra tylko schodami'
             ],
             [
-                'name' => 'Telewizor z płaskim ekranem'
+                'name' => 'Telewizor'
             ],
             [
                 'name' => 'Długie łóżka (> 2 metry)'
@@ -39,10 +39,13 @@ class RoomFacilitySeeder extends Seeder
                 'name' => 'Telewizor'
             ],
             [
-                'name' => 'Klimatyzacja obsługiwana indywidualnie dla każdego pokoju'
+                'name' => 'Klimatyzacja'
             ],
             [
                 'name' => 'Szafa'
+            ],
+            [
+                'name' => 'Bezpłatne wifi'
             ]
         ];
 

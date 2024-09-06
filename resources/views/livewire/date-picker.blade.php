@@ -1,9 +1,9 @@
 @props([
     'name', 'type', 'placeholder' => '',
 ])
-<div class="flex justify-center p-2 gap-x-4">
-    <div>
-        <label for="{{ $startDateName }}" class="required">Data rozpoczęcia pobytu</label>
+<div class="space-y-4 p-2">
+    <div class="space-y-2">
+        <label for="{{ $startDateName }}" class="required_field">Data rozpoczęcia pobytu</label>
         <x-items.date-picker
             name="{{ $startDateName }}"
             type="{{ $type }}"
@@ -13,8 +13,8 @@
             wire:model.live="startDate"/>
     </div>
 
-    <div>
-        <label for="{{ $endDateName }}" class="required">Data zakończenia pobytu</label>
+    <div class="space-y-2">
+        <label for="{{ $endDateName }}" class="required_field">Data zakończenia pobytu</label>
         <x-items.date-picker
             name="{{ $endDateName }}"
             type="{{ $type }}"

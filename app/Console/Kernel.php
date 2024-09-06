@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\Rental;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -12,7 +14,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Zmiana statusu rezerwacji na "zakończono" po terminie
+        $schedule->call(function () {
+            Rental::query()
+                ->where('rental_end', '<', Carbon::now()->toDateString())
+                ->update(['status' => 'zakończono']);
+        })->daily();
     }
 
     /**

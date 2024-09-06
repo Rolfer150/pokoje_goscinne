@@ -1,6 +1,6 @@
 <div class="sticky top-0 z-50 shadow-sm">
     <nav class=" bg-white w-full">
-        <div class="hidden sm:block sm:flex justify-end mr-4 lg:mr-0 lg:justify-center gap-x-6 md:gap-x-10 lg:gap-x-14 p-5">
+        <div class="hidden sm:block sm:flex justify-end lg:justify-center text-sm md:text-base gap-x-4 md:gap-x-8 lg:gap-x-14 p-5">
             <a href="{{ route('home') }}">
                 <x-filament-panels::logo class="fixed left-0 ml-6"/>
             </a>

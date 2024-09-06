@@ -30,7 +30,7 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body class="antialiased relative lato-regular text-gray-700">
+    <body class="antialiased relative lato-regular text-gray-700 min-h-screen">
         <livewire:navbar/>
         {{ $slot }}
         <x-footer />

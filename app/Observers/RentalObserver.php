@@ -28,6 +28,9 @@ class RentalObserver
         if ($rental->rental_end > Carbon::now()->toDateString())
         {
             switch ($rental->status) {
+                case RentalStatus::ACTIVE:
+                    Mail::to($rental->email)->queue(new RentalMade($rental));
+                    break;
                 case RentalStatus::REJECTED:
                     Mail::to($rental->email)->queue(new RentalRejected($rental));
                     break;

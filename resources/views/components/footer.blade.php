@@ -1,4 +1,4 @@
-<footer class="p-10 bg-[#1e212b] text-emerald-400">
+<footer class="sticky top-full p-10 bg-[#1e212b] text-emerald-400 mx-auto">
     <h1 class="text-3xl mb-10">Kontakt</h1>
     <div class="flex justify-between">
         <div>
