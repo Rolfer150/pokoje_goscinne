@@ -67,7 +67,7 @@ class RentalResource extends Resource
                     ->label('Status rezerwacji')
                     ->sortable()
                     ->badge(),
-            ])
+            ])->defaultSort('rental_start')
             ->filters([
                 Tables\Filters\Filter::make('aktywny_status')
                     ->query(fn(Builder $query): Builder => $query->where('status', '=', 'aktywna'))->default(),

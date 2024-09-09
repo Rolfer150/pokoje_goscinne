@@ -115,7 +115,7 @@ class RoomResource extends Resource
                     ->dateTime('d/m/Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
+            ])->defaultSort('bed_amount')
             ->filters([
                 //
             ])

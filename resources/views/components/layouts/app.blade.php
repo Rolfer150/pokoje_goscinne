@@ -26,7 +26,7 @@
             }
         </style>
 
-        @filamentStyles
+{{--        @filamentStyles--}}
         @vite('resources/css/app.css')
     </head>
 
@@ -35,7 +35,7 @@
         {{ $slot }}
         <x-footer />
 
-        @filamentScripts
+{{--        @filamentScripts--}}
         @vite('resources/js/app.js')
 
     </body>

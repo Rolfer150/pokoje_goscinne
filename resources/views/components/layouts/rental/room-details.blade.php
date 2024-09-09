@@ -3,10 +3,10 @@
     <div class="flex space-x-4">
         <div class="w-1/2">
             @if($room->image_path)
-                @foreach($room->image_path as $image)
-                    <img alt="{{ $room->slug . $image }}" src="{{ $room->getURLImages($image) }}" />
-                @endforeach
-{{--                <img alt="{{ $room->slug . $room->image_path[0] }}" src="{{ $room->image_path[0] }}" />--}}
+{{--                @foreach($room->image_path as $image)--}}
+{{--                    <img alt="{{ $room->slug . $image }}" src="{{ $room->getURLImages($image) }}" />--}}
+{{--                @endforeach--}}
+                <img alt="{{ $room->slug }}" src="{{ $room->getURLImages($room->image_path[0]) }}" />
             @endif
         </div>
         <div class="w-1/2">

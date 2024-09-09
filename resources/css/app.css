@@ -53,6 +53,22 @@ p.required_email_or_phone:before {
     padding-right: 5px;
 }
 
+/* Ustawienie kolorów znacznika 'details' */
+
+details {
+    background-color: white;
+}
+
+details[open] > summary {
+    background-color: #10b981;
+    color: white;
+}
+
+details[open] > summary:hover {
+    color: white;
+    opacity: 50%;
+}
+
 /* Lato Font */
 .lato-thin {
     font-family: "Lato", sans-serif;

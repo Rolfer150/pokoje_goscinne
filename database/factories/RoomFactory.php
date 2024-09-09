@@ -35,9 +35,7 @@ class RoomFactory extends Factory
         $images = [];
         $imageCount = rand(3, 6);
 
-        for ($i = 0; $i < $imageCount; $i++) {
-            $images[] = fake()->imageUrl();
-        }
+        for ($i = 0; $i < $imageCount; $i++) $images[] = fake()->imageUrl();
 
         return $images;
     }

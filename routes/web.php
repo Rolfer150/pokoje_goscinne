@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainFacilitiesControlller::class, 'index'])->name('home');
 Route::get('/pokoje', [RoomsController::class, 'index'])->name('room.index');
+Route::get('/atrakcje', function () {return view('attraction.index'); })->name('attraction.index');
 Route::get('/cennik', [PriceListController::class, 'index'])->name('price_list');
 Route::controller(RentalsController::class)
     ->prefix('/rezerwacja')

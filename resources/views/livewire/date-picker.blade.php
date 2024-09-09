@@ -5,6 +5,7 @@
     <div class="space-y-2">
         <label for="{{ $startDateName }}" class="required_field">Data rozpoczęcia pobytu</label>
         <x-items.date-picker
+            required
             name="{{ $startDateName }}"
             type="{{ $type }}"
             min="{{ $this->getMinStartDate() }}"
@@ -16,6 +17,7 @@
     <div class="space-y-2">
         <label for="{{ $endDateName }}" class="required_field">Data zakończenia pobytu</label>
         <x-items.date-picker
+            required
             name="{{ $endDateName }}"
             type="{{ $type }}"
             min="{{ $this->getMinEndDate() }}"

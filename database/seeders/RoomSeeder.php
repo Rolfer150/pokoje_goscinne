@@ -69,9 +69,7 @@ class RoomSeeder extends Seeder
         $images = [];
         $imageCount = rand(1, 5);
 
-        for ($i = 0; $i < $imageCount; $i++) {
-            $images[] = fake()->imageUrl();
-        }
+        for ($i = 0; $i < $imageCount; $i++) $images[] = fake()->imageUrl();
 
         return $images;
     }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 24);
-            $table->string('slug', 48)->unique();
+            $table->string('name', 64);
+            $table->string('slug', 128)->unique();
             $table->json('image_path')->nullable();
             $table->longText('description');
             $table->integer('bed_amount');
