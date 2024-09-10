@@ -49,7 +49,7 @@ class RentalTest extends TestCase
             'rental_start' => $newRental->rental_start,
             'rental_end' => $newRental->rental_end,
             'room_id' => $newRental->room_id,
-            'status' => \App\Enums\RentalStatus::WAITING
+            'status' => \App\Enums\RentalStatus::ACTIVE
         ]);
     }
 }

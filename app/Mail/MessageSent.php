@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class MessageSended extends Mailable
+class MessageSent extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,8 +29,8 @@ class MessageSended extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Message Sended',
             from: new Address($this->message->email, $this->message->name),
+            subject: $this->message->topic,
         );
     }
 

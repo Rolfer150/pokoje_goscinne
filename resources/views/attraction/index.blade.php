@@ -1,3 +1,3 @@
 <x-layouts.app page-title="Atrakcje">
-<h1>Atrakcje</h1>
+    <x-header title="Atrakcje" />
 </x-layouts.app>

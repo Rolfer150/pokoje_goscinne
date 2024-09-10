@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMessageRequest;
-use App\Mail\MessageSended;
+use App\Mail\MessageSent;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -27,9 +27,9 @@ class MessageController extends Controller
         $message = new Message($request->all());
 //        dd($message->getAttributes());
         $message->save();
-//        Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new MessageSended($message));
+//        Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new MessageSent($message));
 
-        return redirect(route('home'))->with('success', "Twoja wiadomość została pomyślnie wysłana");
+        return redirect()->back()->with('success', 'Twoja wiadomość została pomyślnie wysłana.');
     }
 
     /**

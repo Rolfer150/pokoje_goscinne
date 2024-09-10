@@ -26,7 +26,7 @@ class RentalsController extends Controller
 //        dd($rental);
         $rental->comments = $request->comments;
 
-        if (!$rental->canRent($rental->email)) {
+        if ($rental->email !== null && !$rental->canRent($rental->email)) {
             return redirect()->back()->with('error', 'Twoja wcześniejsza rezerwacja oczekuje na zaakceptowanie!');
         }
         else {

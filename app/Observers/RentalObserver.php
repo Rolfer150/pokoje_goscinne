@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Enums\RentalStatus;
-use App\Mail\RentalAccepted;
 use App\Mail\RentalMade;
 use App\Mail\RentalRejected;
 use App\Models\Rental;
@@ -17,7 +16,7 @@ class RentalObserver
      */
     public function created(Rental $rental): void
     {
-        Mail::to($rental->email)->queue(new RentalMade($rental));
+        if ($rental->email) Mail::to($rental->email)->queue(new RentalMade($rental));
     }
 
     /**

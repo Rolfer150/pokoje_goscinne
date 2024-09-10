@@ -8,7 +8,7 @@ use Livewire\Component;
 class DetailPanel extends Component
 {
     public $room;
-    public bool $isClosed = false;
+    public bool $isOpened = false;
     public ?int $imageKey = null;
     public function mount($room)
     {
@@ -19,21 +19,35 @@ class DetailPanel extends Component
     {
         return view('livewire.detail-panel');
     }
-    public function openModal($key)
+    public function openModal(int $key)
     {
         $this->imageKey = $key;
-        $this->isClosed = true;
+        $this->isOpened = true;
 
     }
 
     public function closeModal()
     {
         $this->imageKey = null;
-        $this->isClosed = false;
+        $this->isOpened = false;
     }
 
-    public function getIsClosed()
+    public function getIsOpened()
     {
-        return $this->isClosed;
+        return $this->isOpened;
+    }
+
+    public function nextImage()
+    {
+        $imageArraySize = count($this->room->image_path);
+
+        $this->imageKey >= $imageArraySize - 1 ? $this->imageKey = 0 : $this->imageKey++;
+    }
+
+    public function previousImage()
+    {
+        $imageArraySize = count($this->room->image_path);
+
+        $this->imageKey <= 0 ? $this->imageKey = $imageArraySize - 1 : $this->imageKey--;
     }
 }

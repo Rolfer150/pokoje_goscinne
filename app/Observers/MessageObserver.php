@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Mail\MessageSended;
+use App\Mail\MessageSent;
 use App\Models\Message;
 use Illuminate\Support\Facades\Mail;
 
@@ -13,7 +13,7 @@ class MessageObserver
      */
     public function created(Message $message): void
     {
-        Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new MessageSended($message));
+        if ($message->email) Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new MessageSent($message));
     }
 
     /**
