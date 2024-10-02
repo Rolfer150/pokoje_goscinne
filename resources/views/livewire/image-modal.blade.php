@@ -1,44 +1,16 @@
-<div class="relative my-5">
-    <details
-        class="text-lg border-2 border-emerald-500 open:ring-1 open:ring-black/5 open:shadow-lg rounded-lg"
-        name="room_details">
-        <summary
-            class="flex items-center gap-x-3 text-emerald-600 hover:text-emerald-600/50 text-xl p-6 cursor-pointer duration-200"
-            name="room_details">{{ $room->name }}</summary>
-        <div class="p-6">
-            @if(!is_null($room->image_path))
-                <div class="flex flex-wrap gap-2 mb-8 justify-center">
-                    @foreach($room->image_path as $key => $value)
-                        <div class="overflow-hidden w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
-                            <img
-                                wire:click="openModal({{ $key }})"
-                                wire:keydown.escape="closeModal"
-                                class="opacity-100 transition cursor-pointer duration-300 hover:opacity-80 hover:scale-110"
-                                alt="" src="{{ $room->getURLImages($value) }}"/>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-
-            <div class="border-t-2 border-emerald-200">
-                <p>{{ $room->description }}</p>
-
-                <h4 class="text-xl text-emerald-500 lato-bold mt-4">Cena</h4>
-                <p>{{ $room->getPrice() }} (jedna noc)</p>
-
-                <h4 class="text-xl text-emerald-500 lato-bold mt-4">Ilość łóżek</h4>
-                <p>{{ $room->bed_amount }}</p>
-
-                <h4 class="text-xl text-emerald-500 lato-bold mt-4">Udogodnienia</h4>
-                <ul class="grid grid-rows-4 grid-flow-col gap-2">
-                    @foreach($room->getFacilities($room->id) as $facility)
-                        <li>{{ $facility }}</li>
-                    @endforeach
-                </ul>
-            </div>
+<div class="flex flex-wrap justify-center gap-2 w-full">
+    @foreach($photos as $key => $value)
+        <div class="overflow-hidden w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <img
+                wire:click="openModal({{ $key }})"
+                wire:keydown.escape="closeModal"
+                class="opacity-100 transition cursor-pointer duration-300 hover:opacity-80 hover:scale-110"
+                alt=""
+                src="{{$value->getURLImage()}}"/>
         </div>
-    </details>
-    @if($this->getIsOpened())
+    @endforeach
+
+    @if($this->isOpened))
         <div class="fixed top-0 z-50 left-0 inset-x-0 w-full h-screen mx-auto bg-[rgba(0,0,0,0.9)]"
              wire:keydown.escape.window="closeModal" wire:transition>
             <button wire:click="closeModal"
@@ -49,7 +21,7 @@
                 </svg>
             </button>
             <div class="flex items-center justify-center text-white gap-x-8">
-                @if(count($room->image_path) !== 1)
+                @if(count($photos) !== 1)
                     <button
                         wire:keydown.left.window="previousImage"
                         wire:click="previousImage"
@@ -63,10 +35,10 @@
                     </button>
                 @endif
                 <div>
-                    <img src="{{ $room->getURLImages($room->image_path[$this->imageKey]) }}"
+                    <img src="{{ $photos[$this->imageKey]->getURLImage() }}"
                          class="relative z-55 top-10 lg:top-0 left-0 mx-auto max-w-[90vw] max-h-[90vh]"/>
                 </div>
-                @if(count($room->image_path) !== 1)
+                @if(count($photos) !== 1)
                     <button
                         wire:keydown.right.window="nextImage"
                         wire:click="nextImage"

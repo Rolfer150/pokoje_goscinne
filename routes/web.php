@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\MainFacilitiesControlller;
 use App\Http\Controllers\PriceListController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\RoomsController;
@@ -18,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainFacilitiesControlller::class, 'index'])->name('home');
-Route::get('/pokoje', [RoomsController::class, 'index'])->name('room.index');
-Route::get('/atrakcje', function () {return view('attraction.index'); })->name('attraction.index');
+Route::get('/', [App\Http\Controllers\MainFacilitiesControlller::class, 'index'])->name('home');
+Route::get('/pokoje', [App\Http\Controllers\RoomsController::class, 'index'])->name('room.index');
+Route::get('/galeria', [App\Http\Controllers\GalleryController::class, 'index'])->name('gallery.index');
+Route::get('/atrakcje', [App\Http\Controllers\AttractionController::class, 'index'])->name('attraction.index');
 Route::get('/cennik', [PriceListController::class, 'index'])->name('price_list');
 Route::controller(RentalsController::class)
     ->prefix('/rezerwacja')

@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class RoomResource extends Resource
 {
@@ -77,10 +78,13 @@ class RoomResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image_path')
                     ->label("Zdjęcia")
-                    ->multiple()
-                    ->directory('room-images')
-                    ->preserveFilenames()
                     ->image()
+                    ->multiple()
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => (string) str(str_replace(' ', '_', $file->getClientOriginalName()))
+                            ->prepend(now()->timestamp),
+                    )
+                    ->directory('room-images')
                     ->columnSpanFull(),
             ]);
     }

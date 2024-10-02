@@ -6,6 +6,7 @@
             </a>
             <x-items.nav-link :href="route('home')" :active="request()->routeIs('home')">Strona główna</x-items.nav-link>
             <x-items.nav-link :href="route('room.index')" :active="request()->routeIs('room.index')">Pokoje</x-items.nav-link>
+            <x-items.nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">Galeria</x-items.nav-link>
             <x-items.nav-link :href="route('attraction.index')" :active="request()->routeIs('attraction.index')">Atrakcje</x-items.nav-link>
             <x-items.nav-link :href="route('price_list')" :active="request()->routeIs('price_list')">Cennik</x-items.nav-link>
             <x-items.nav-link :href="route('rental.create')" :active="request()->routeIs('rental.create')">Rezerwacja</x-items.nav-link>

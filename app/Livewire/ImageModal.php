@@ -1,24 +1,21 @@
 <?php
 
 namespace App\Livewire;
-
-use App\Models\Room;
 use Livewire\Component;
 
-class DetailPanel extends Component
+class ImageModal extends Component
 {
-    public $room;
+    public $photos = [];
     public bool $isOpened = false;
     public ?int $imageKey = null;
-    public function mount($room)
-    {
-        $this->room = $room;
+    public function mount($photos) {
+        $this->photos = $photos;
     }
-
     public function render()
     {
-        return view('livewire.detail-panel');
+        return view('livewire.image-modal');
     }
+
     public function openModal(int $key)
     {
         $this->imageKey = $key;
@@ -31,22 +28,15 @@ class DetailPanel extends Component
         $this->isOpened = false;
     }
 
-    public function getIsOpened()
-    {
-        return $this->isOpened;
-    }
-
     public function nextImage()
     {
-        $imageArraySize = count($this->room->image_path);
-
+        $imageArraySize = count($this->photos);
         $this->imageKey >= $imageArraySize - 1 ? $this->imageKey = 0 : $this->imageKey++;
     }
 
     public function previousImage()
     {
-        $imageArraySize = count($this->room->image_path);
-
+        $imageArraySize = count($this->photos);
         $this->imageKey <= 0 ? $this->imageKey = $imageArraySize - 1 : $this->imageKey--;
     }
 }

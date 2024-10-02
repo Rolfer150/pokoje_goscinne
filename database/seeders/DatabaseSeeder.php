@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             RoomSeeder::class,
         ]);
 
+        \App\Models\Gallery::factory(16)->create();
+
         $roomFacilities = \App\Models\RoomFacility::all();
         Room::factory(4)
             ->create()

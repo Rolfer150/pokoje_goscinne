@@ -2,7 +2,7 @@
     <x-header title="Pokoje"/>
 
     <div class="container mx-auto">
-        <div class="ml-4 mr-4 mt-10 mb-10 sm:ml-8 sm:mr-8 lg:ml-36 lg:mr-36">
+        <div class="mx-4 my-10 sm:mx-8 lg:mx-36">
             <div class="flex flex-col justify-center items-center lg:flex-row gap-6">
                 <img src="{{ asset('img/room1.jpg') }}" class="rounded-md lg:w-1/2" />
                 <h3 class="text-center text-lg text-justify">

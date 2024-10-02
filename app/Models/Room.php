@@ -65,9 +65,7 @@ class Room extends Model
 
     public function getURLImages($image)
     {
-        if (str_starts_with($image, 'http')) {
-            return $image;
-        }
+        if (str_starts_with($image, 'http')) return $image;
 
         return '/storage/' . $image;
     }
